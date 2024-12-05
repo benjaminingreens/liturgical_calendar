@@ -319,8 +319,74 @@ def assign_readings(
         **other_other,
     }
 
-    week_number = 0  # Internal week counter
+    week_number = 0  # Internal week counter for Sundays
     assigned_readings = []
+
+    # Function to convert numbers to ordinals
+    def to_ordinal(n):
+        if 11 <= n % 100 <= 13:
+            suffix = "th"
+        else:
+            suffix = {1: "st", 2: "nd", 3: "rd"}.get(n % 10, "th")
+        return f"{n}{suffix}"
+
+    # Adjust Advent readings to cut the top, keeping the final readings fixed
+    if season_name == "Advent" and len(daily_readings) > num_days:
+        daily_readings = daily_readings[-num_days:]  # Keep the last `num_days` readings
+
+    # Adjust readings for Baptism date in Epiphany
+    if baptism_adjust and season_name == "Epiphany":
+        baptism_day = first_sunday_after(season_start)  # First Sunday after Epiphany
+        print(f"Baptism Day identified as {baptism_day}")
+
+        # Shift readings to ensure Matthew 3 on Baptism day
+        baptism_index = (baptism_day - season_start).days
+        print(f"Baptism Index in readings: {baptism_index}")
+
+        if baptism_index < len(daily_readings):
+            # Ensure Matthew 3 on Baptism Day
+            daily_readings[baptism_index] = (
+                "Baptism of Christ",
+                "",
+                "Matthew 3",
+            )
+
+        # Adjust readings for earlier days (ensure Matthew 2 on the first day if Baptism is on day 2)
+        if baptism_index == 1:
+            daily_readings[0] = ("Epiphany Day", "", "Matthew 2")
+
+        # Shift later readings accordingly
+        post_baptism_readings = [
+            ("", "Matthew 4"),
+            ("", "Matthew 5"),
+            ("", "Matthew 6"),
+            ("", "Matthew 7"),
+            ("", "Matthew 8"),
+            ("", "Matthew 9"),
+            ("", "Matthew 10"),
+            ("", "Matthew 11"),
+            ("", "Matthew 12"),
+            ("", "Matthew 13"),
+            ("", "Matthew 14"),
+            ("", "Matthew 15"),
+            ("", "Matthew 16"),
+            ("", "Matthew 17"),
+            ("", "Matthew 18"),
+            ("", "Matthew 19"),
+            ("", "Matthew 20"),
+        ]
+        for i, reading in enumerate(post_baptism_readings, start=baptism_index + 1):
+            if i < len(daily_readings):
+                daily_readings[i] = ("Epiphany Continuation", reading[0], reading[1])
+
+        # Ensure John 1:1–18 on the last day of Epiphany
+        epiphany_end_index = num_days - 1
+        if epiphany_end_index < len(daily_readings):
+            daily_readings[epiphany_end_index] = (
+                "Last Day of Epiphany",
+                "",
+                "John 1:1-18",
+            )
 
     for i in range(num_days):
         current_date = season_start + timedelta(days=i)
@@ -333,10 +399,11 @@ def assign_readings(
             if current_date.weekday() == 6:
                 week_number += 1
         else:
-            # For Sundays, increment the week counter
+            # For Sundays, increment the week counter and use ordinal for naming
             if current_date.weekday() == 6:  # Sunday
                 week_number += 1
-                day_name = f"{week_number} Sunday of {season_name}"
+                ordinal = to_ordinal(week_number)
+                day_name = f"{ordinal} Sunday of {season_name}"
             else:
                 # Use the most recent Sunday week number for weekdays
                 day_of_week = current_date.strftime("%A")
@@ -460,6 +527,14 @@ def generate_lexicon_csv(year, readings_file, output_file):
             writer.writerow(entry)
 
     print(f"Lexicon CSV saved as {output_file}")
+
+def ordinal(n):
+    """Convert an integer into its ordinal representation."""
+    if 11 <= n % 100 <= 13:
+        suffix = "th"
+    else:
+        suffix = {1: "st", 2: "nd", 3: "rd"}.get(n % 10, "th")
+    return f"{n}{suffix}"
 
 
 # Main function to generate lexicon CSV
