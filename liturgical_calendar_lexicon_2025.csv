@@ -1,0 +1,365 @@
+Date       ,Season               ,Day Name                                     ,OT Reading                              ,NT Reading
+2024-12-01 ,Advent               ,1 Sunday of Advent                           ,Proverbs 1:1-7                          ,
+2024-12-02 ,Advent               ,Monday of Week 1 of Advent                   ,Proverbs 3:1-12                         ,
+2024-12-03 ,Advent               ,Tuesday of Week 1 of Advent                  ,Proverbs 4:1-9                          ,
+2024-12-04 ,Advent               ,Wednesday of Week 1 of Advent                ,Proverbs 8:22-31                        ,
+2024-12-05 ,Advent               ,Thursday of Week 1 of Advent                 ,Proverbs 16:1-9                         ,
+2024-12-06 ,Advent               ,Friday of Week 1 of Advent                   ,Proverbs 9:1-12                         ,
+2024-12-07 ,Advent               ,Saturday of Week 1 of Advent                 ,Genesis 1:1-5 & 26-31; Genesis 3:1-15   ,
+2024-12-08 ,Advent               ,2 Sunday of Advent                           ,Genesis 12:1-7; Genesis 22:1-18         ,
+2024-12-09 ,Advent               ,Monday of Week 2 of Advent                   ,Genesis 28:10-17; Genesis 49:8-12       ,
+2024-12-10 ,Advent               ,Tuesday of Week 2 of Advent                  ,Exodus 3:1-12; Exodus 12:21-28          ,
+2024-12-11 ,Advent               ,Wednesday of Week 2 of Advent                ,Exodus 19:3-8; Exodus 20:1-17           ,
+2024-12-12 ,Advent               ,Thursday of Week 2 of Advent                 ,Exodus 25:1-9; Exodus 40:34-38          ,
+2024-12-13 ,Advent               ,Friday of Week 2 of Advent                   ,Numbers 9:15-23; Numbers 24:15-19       ,
+2024-12-14 ,Advent               ,Saturday of Week 2 of Advent                 ,Deuteronomy 6:4-12; Joshua 1:1-9        ,
+2024-12-15 ,Advent               ,3 Sunday of Advent                           ,Judges 2:11-19; Ruth 4:13-17            ,
+2024-12-16 ,Advent               ,Monday of Week 3 of Advent                   ,1 Samuel 8:1-22; 1 Samuel 16:1-13       ,
+2024-12-17 ,Advent               ,Tuesday of Week 3 of Advent                  ,2 Samuel 7:8-16; Psalm 72:1-17          ,
+2024-12-18 ,Advent               ,Wednesday of Week 3 of Advent                ,1 Kings 8:22-30; 1 Kings 8:54-61        ,
+2024-12-19 ,Advent               ,Thursday of Week 3 of Advent                 ,1 Kings 11:9-13; 1 Kings 18:20-39       ,
+2024-12-20 ,Advent               ,Friday of Week 3 of Advent                   ,2 Kings 25:1-12; Jeremiah 31:31-34      ,
+2024-12-21 ,Advent               ,Saturday of Week 3 of Advent                 ,Ezra 1:1-5; Nehemiah 8:1-12             ,
+2024-12-22 ,Advent               ,4 Sunday of Advent                           ,Isaiah 9:2-7; Micah 5:2-5               ,
+2024-12-23 ,Advent               ,Monday of Week 4 of Advent                   ,Psalm 130:1-8; Isaiah 40:1-11           ,
+2024-12-24 ,Advent               ,Tuesday of Week 4 of Advent                  ,Psalm 80:1-7 & 17-19; Jeremiah 33:14-16 ,
+2024-12-25 ,Christmas            ,CHRISTMAS DAY                                ,                                        ,Luke 2:1-21
+2024-12-26 ,Christmas            ,Boxing Day                                   ,                                        ,
+2024-12-27 ,Christmas            ,Friday of Week 0 of Christmas                ,                                        ,
+2024-12-28 ,Christmas            ,Saturday of Week 0 of Christmas              ,                                        ,
+2024-12-29 ,Christmas            ,1 Sunday of Christmas                        ,                                        ,
+2024-12-30 ,Christmas            ,Monday of Week 1 of Christmas                ,                                        ,
+2024-12-31 ,Christmas            ,Tuesday of Week 1 of Christmas               ,                                        ,
+2025-01-01 ,Christmas            ,New Year's Day                               ,                                        ,
+2025-01-02 ,Christmas            ,Thursday of Week 1 of Christmas              ,                                        ,
+2025-01-03 ,Christmas            ,Friday of Week 1 of Christmas                ,                                        ,
+2025-01-04 ,Christmas            ,Saturday of Week 1 of Christmas              ,                                        ,
+2025-01-05 ,Christmas            ,2 Sunday of Christmas                        ,                                        ,
+2025-01-06 ,Epiphany             ,EPIPHANY                                     ,                                        ,Matthew 2:1-12
+2025-01-07 ,Epiphany             ,Tuesday of Week 0 of Epiphany                ,                                        ,Matthew 2:13-23
+2025-01-08 ,Epiphany             ,Wednesday of Week 0 of Epiphany              ,                                        ,Unknown
+2025-01-09 ,Epiphany             ,Thursday of Week 0 of Epiphany               ,                                        ,Unknown
+2025-01-10 ,Epiphany             ,Friday of Week 0 of Epiphany                 ,                                        ,Unknown
+2025-01-11 ,Epiphany             ,Saturday of Week 0 of Epiphany               ,                                        ,Unknown
+2025-01-12 ,Epiphany             ,Baptism of Christ                            ,                                        ,Unknown
+2025-01-13 ,Epiphany             ,Monday of Week 1 of Epiphany                 ,                                        ,Matthew 3
+2025-01-14 ,Epiphany             ,Tuesday of Week 1 of Epiphany                ,                                        ,Matthew 4
+2025-01-15 ,Epiphany             ,Wednesday of Week 1 of Epiphany              ,                                        ,Matthew 5
+2025-01-16 ,Epiphany             ,Thursday of Week 1 of Epiphany               ,                                        ,Matthew 6
+2025-01-17 ,Epiphany             ,Friday of Week 1 of Epiphany                 ,                                        ,Matthew 7
+2025-01-18 ,Epiphany             ,Saturday of Week 1 of Epiphany               ,                                        ,Matthew 8
+2025-01-19 ,Epiphany             ,2 Sunday of Epiphany                         ,                                        ,Matthew 9
+2025-01-20 ,Epiphany             ,Monday of Week 2 of Epiphany                 ,                                        ,Matthew 10
+2025-01-21 ,Epiphany             ,Tuesday of Week 2 of Epiphany                ,                                        ,Matthew 11
+2025-01-22 ,Epiphany             ,Wednesday of Week 2 of Epiphany              ,                                        ,Matthew 12
+2025-01-23 ,Epiphany             ,Thursday of Week 2 of Epiphany               ,                                        ,Matthew 13
+2025-01-24 ,Epiphany             ,Friday of Week 2 of Epiphany                 ,                                        ,Matthew 14
+2025-01-25 ,Epiphany             ,Saturday of Week 2 of Epiphany               ,                                        ,Matthew 15
+2025-01-26 ,Epiphany             ,3 Sunday of Epiphany                         ,                                        ,Matthew 16
+2025-01-27 ,Epiphany             ,Monday of Week 3 of Epiphany                 ,                                        ,Matthew 17
+2025-01-28 ,Epiphany             ,Tuesday of Week 3 of Epiphany                ,                                        ,Matthew 18
+2025-01-29 ,Epiphany             ,Wednesday of Week 3 of Epiphany              ,                                        ,Matthew 19
+2025-01-30 ,Epiphany             ,Thursday of Week 3 of Epiphany               ,                                        ,Matthew 20
+2025-01-31 ,Epiphany             ,Friday of Week 3 of Epiphany                 ,                                        ,
+2025-02-01 ,Epiphany             ,Saturday of Week 3 of Epiphany               ,                                        ,
+2025-02-02 ,Epiphany             ,CANDLEMAS                                    ,                                        ,John 1:1-18
+2025-02-03 ,First Ordinary Time  ,Monday of Week 0 of First Ordinary Time      ,                                        ,John 1:19-34
+2025-02-04 ,First Ordinary Time  ,Tuesday of Week 0 of First Ordinary Time     ,                                        ,John 1:35-51
+2025-02-05 ,First Ordinary Time  ,Wednesday of Week 0 of First Ordinary Time   ,                                        ,John 2
+2025-02-06 ,First Ordinary Time  ,Thursday of Week 0 of First Ordinary Time    ,                                        ,John 3
+2025-02-07 ,First Ordinary Time  ,Friday of Week 0 of First Ordinary Time      ,                                        ,John 4
+2025-02-08 ,First Ordinary Time  ,Saturday of Week 0 of First Ordinary Time    ,                                        ,John 5
+2025-02-09 ,First Ordinary Time  ,1 Sunday of First Ordinary Time              ,                                        ,John 6
+2025-02-10 ,First Ordinary Time  ,Monday of Week 1 of First Ordinary Time      ,                                        ,John 7
+2025-02-11 ,First Ordinary Time  ,Tuesday of Week 1 of First Ordinary Time     ,                                        ,John 8
+2025-02-12 ,First Ordinary Time  ,Wednesday of Week 1 of First Ordinary Time   ,                                        ,John 9
+2025-02-13 ,First Ordinary Time  ,Thursday of Week 1 of First Ordinary Time    ,                                        ,John 10
+2025-02-14 ,First Ordinary Time  ,St. Valentine's Day                          ,                                        ,John 11
+2025-02-15 ,First Ordinary Time  ,Saturday of Week 1 of First Ordinary Time    ,                                        ,John 12:1-11
+2025-02-16 ,First Ordinary Time  ,2 Sunday of First Ordinary Time              ,                                        ,
+2025-02-17 ,First Ordinary Time  ,Monday of Week 2 of First Ordinary Time      ,                                        ,
+2025-02-18 ,First Ordinary Time  ,Tuesday of Week 2 of First Ordinary Time     ,                                        ,
+2025-02-19 ,First Ordinary Time  ,Wednesday of Week 2 of First Ordinary Time   ,                                        ,
+2025-02-20 ,First Ordinary Time  ,Thursday of Week 2 of First Ordinary Time    ,                                        ,
+2025-02-21 ,First Ordinary Time  ,Friday of Week 2 of First Ordinary Time      ,                                        ,
+2025-02-22 ,First Ordinary Time  ,Saturday of Week 2 of First Ordinary Time    ,                                        ,
+2025-02-23 ,First Ordinary Time  ,3 Sunday of First Ordinary Time              ,                                        ,
+2025-02-24 ,First Ordinary Time  ,Monday of Week 3 of First Ordinary Time      ,                                        ,
+2025-02-25 ,First Ordinary Time  ,Tuesday of Week 3 of First Ordinary Time     ,                                        ,
+2025-02-26 ,First Ordinary Time  ,Wednesday of Week 3 of First Ordinary Time   ,                                        ,
+2025-02-27 ,First Ordinary Time  ,Thursday of Week 3 of First Ordinary Time    ,                                        ,
+2025-02-28 ,First Ordinary Time  ,Friday of Week 3 of First Ordinary Time      ,                                        ,
+2025-03-01 ,First Ordinary Time  ,Saturday of Week 3 of First Ordinary Time    ,                                        ,
+2025-03-02 ,First Ordinary Time  ,4 Sunday of First Ordinary Time              ,                                        ,
+2025-03-03 ,First Ordinary Time  ,Monday of Week 4 of First Ordinary Time      ,                                        ,
+2025-03-04 ,First Ordinary Time  ,Shrove Tuesday (Pancake Day)                 ,                                        ,
+2025-03-05 ,Lent                 ,Ash Wednesday                                ,Genesis 1-3                             ,
+2025-03-06 ,Lent                 ,Thursday of Week 0 of Lent                   ,Genesis 4-7                             ,
+2025-03-07 ,Lent                 ,Friday of Week 0 of Lent                     ,Genesis 8-11                            ,
+2025-03-08 ,Lent                 ,Saturday of Week 0 of Lent                   ,Genesis 12-15                           ,
+2025-03-09 ,Lent                 ,1 Sunday of Lent                             ,Genesis 16-18                           ,
+2025-03-10 ,Lent                 ,Monday of Week 1 of Lent                     ,Genesis 19-21                           ,
+2025-03-11 ,Lent                 ,Tuesday of Week 1 of Lent                    ,Genesis 22-24                           ,
+2025-03-12 ,Lent                 ,Wednesday of Week 1 of Lent                  ,Genesis 25-28                           ,
+2025-03-13 ,Lent                 ,Thursday of Week 1 of Lent                   ,Genesis 29-31                           ,
+2025-03-14 ,Lent                 ,Friday of Week 1 of Lent                     ,Genesis 32-34                           ,
+2025-03-15 ,Lent                 ,Saturday of Week 1 of Lent                   ,Genesis 35-37                           ,
+2025-03-16 ,Lent                 ,2 Sunday of Lent                             ,Genesis 38-40                           ,
+2025-03-17 ,Lent                 ,Monday of Week 2 of Lent                     ,Genesis 41-42                           ,
+2025-03-18 ,Lent                 ,Tuesday of Week 2 of Lent                    ,Genesis 43-45                           ,
+2025-03-19 ,Lent                 ,Wednesday of Week 2 of Lent                  ,Genesis 46-47                           ,
+2025-03-20 ,Lent                 ,Thursday of Week 2 of Lent                   ,Genesis 48-50                           ,
+2025-03-21 ,Lent                 ,Friday of Week 2 of Lent                     ,                                        ,
+2025-03-22 ,Lent                 ,Saturday of Week 2 of Lent                   ,                                        ,
+2025-03-23 ,Lent                 ,3 Sunday of Lent                             ,                                        ,
+2025-03-24 ,Lent                 ,Monday of Week 3 of Lent                     ,                                        ,
+2025-03-25 ,Lent                 ,ANNUNCIATION                                 ,                                        ,
+2025-03-26 ,Lent                 ,Wednesday of Week 3 of Lent                  ,                                        ,
+2025-03-27 ,Lent                 ,Thursday of Week 3 of Lent                   ,                                        ,
+2025-03-28 ,Lent                 ,Friday of Week 3 of Lent                     ,                                        ,
+2025-03-29 ,Lent                 ,Saturday of Week 3 of Lent                   ,                                        ,
+2025-03-30 ,Lent                 ,4 Sunday of Lent                             ,                                        ,
+2025-03-31 ,Lent                 ,Monday of Week 4 of Lent                     ,                                        ,
+2025-04-01 ,Lent                 ,Tuesday of Week 4 of Lent                    ,                                        ,
+2025-04-02 ,Lent                 ,Wednesday of Week 4 of Lent                  ,                                        ,
+2025-04-03 ,Lent                 ,Thursday of Week 4 of Lent                   ,                                        ,
+2025-04-04 ,Lent                 ,Friday of Week 4 of Lent                     ,                                        ,
+2025-04-05 ,Lent                 ,Saturday of Week 4 of Lent                   ,                                        ,
+2025-04-06 ,Lent                 ,5 Sunday of Lent                             ,                                        ,
+2025-04-07 ,Lent                 ,Monday of Week 5 of Lent                     ,                                        ,
+2025-04-08 ,Lent                 ,Tuesday of Week 5 of Lent                    ,                                        ,
+2025-04-09 ,Lent                 ,Wednesday of Week 5 of Lent                  ,                                        ,
+2025-04-10 ,Lent                 ,Thursday of Week 5 of Lent                   ,                                        ,
+2025-04-11 ,Lent                 ,Friday of Week 5 of Lent                     ,                                        ,
+2025-04-12 ,Lent                 ,Saturday of Week 5 of Lent                   ,                                        ,
+2025-04-13 ,Lent                 ,Palm Sunday                                  ,Exodus 1-2                              ,John 12:12-19; Matthew 21:1-17
+2025-04-14 ,Lent                 ,Holy Monday                                  ,Exodus 3-4                              ,John 12:20-36; Matthew 21:18-46
+2025-04-15 ,Lent                 ,Holy Tuesday                                 ,Exodus 5-17:13                          ,John 12:37-50; Matthew 22:1-46
+2025-04-16 ,Lent                 ,Holy Wednesday                               ,Exodus 7:14-10                          ,Matthew 23-24
+2025-04-17 ,Lent                 ,Maundy Thursday                              ,Exodus 11-12                            ,John 13-16; Luke 22:1-38
+2025-04-18 ,Lent                 ,Good Friday                                  ,                                        ,John 17-19; Matthew 26:36-27:61
+2025-04-19 ,Lent                 ,Holy Saturday                                ,                                        ,
+2025-04-20 ,Easter               ,EASTER SUNDAY                                ,Exodus 13-15:21                         ,John 20:1-18; Matthew 27:62-28:10
+2025-04-21 ,Easter               ,Monday of Week 1 of Easter                   ,Exodus 15:22-18                         ,John 20:19-31; Matthew 28:11-20
+2025-04-22 ,Easter               ,Tuesday of Week 1 of Easter                  ,Exodus 19-21                            ,John 21
+2025-04-23 ,Easter               ,Wednesday of Week 1 of Easter                ,Exodus 22-24                            ,
+2025-04-24 ,Easter               ,Thursday of Week 1 of Easter                 ,Exodus 25-27                            ,
+2025-04-25 ,Easter               ,Friday of Week 1 of Easter                   ,Exodus 28-29                            ,
+2025-04-26 ,Easter               ,Saturday of Week 1 of Easter                 ,Exodus 30-31                            ,
+2025-04-27 ,Easter               ,2 Sunday of Easter                           ,Exodus 32-34                            ,
+2025-04-28 ,Easter               ,Monday of Week 2 of Easter                   ,Exodus 35-40                            ,
+2025-04-29 ,Easter               ,Tuesday of Week 2 of Easter                  ,Leviticus 1-4                           ,
+2025-04-30 ,Easter               ,Wednesday of Week 2 of Easter                ,Leviticus 5-7                           ,
+2025-05-01 ,Easter               ,Thursday of Week 2 of Easter                 ,Leviticus 8-10                          ,
+2025-05-02 ,Easter               ,Friday of Week 2 of Easter                   ,Leviticus 11-13                         ,
+2025-05-03 ,Easter               ,Saturday of Week 2 of Easter                 ,Leviticus 14-15                         ,
+2025-05-04 ,Easter               ,3 Sunday of Easter                           ,Leviticus 16-18                         ,
+2025-05-05 ,Easter               ,Monday of Week 3 of Easter                   ,Leviticus 19-20                         ,
+2025-05-06 ,Easter               ,Tuesday of Week 3 of Easter                  ,Leviticus 21-23                         ,
+2025-05-07 ,Easter               ,Wednesday of Week 3 of Easter                ,Leviticus 24-25                         ,
+2025-05-08 ,Easter               ,Thursday of Week 3 of Easter                 ,Leviticus 26-27                         ,
+2025-05-09 ,Easter               ,Friday of Week 3 of Easter                   ,Numbers 1-4                             ,
+2025-05-10 ,Easter               ,Saturday of Week 3 of Easter                 ,Numbers 5-7                             ,
+2025-05-11 ,Easter               ,4 Sunday of Easter                           ,Numbers 8-10                            ,
+2025-05-12 ,Easter               ,Monday of Week 4 of Easter                   ,Numbers 11-13                           ,
+2025-05-13 ,Easter               ,Tuesday of Week 4 of Easter                  ,Numbers 14-16                           ,
+2025-05-14 ,Easter               ,Wednesday of Week 4 of Easter                ,Numbers 17-18                           ,
+2025-05-15 ,Easter               ,Thursday of Week 4 of Easter                 ,Numbers 19-21                           ,
+2025-05-16 ,Easter               ,Friday of Week 4 of Easter                   ,Numbers 22-24                           ,
+2025-05-17 ,Easter               ,Saturday of Week 4 of Easter                 ,Numbers 25-27                           ,
+2025-05-18 ,Easter               ,5 Sunday of Easter                           ,Numbers 28-30                           ,
+2025-05-19 ,Easter               ,Monday of Week 5 of Easter                   ,Numbers 31-32                           ,
+2025-05-20 ,Easter               ,Tuesday of Week 5 of Easter                  ,Numbers 33-34                           ,
+2025-05-21 ,Easter               ,Wednesday of Week 5 of Easter                ,Numbers 35-36                           ,
+2025-05-22 ,Easter               ,Thursday of Week 5 of Easter                 ,Deuteronomy 1-3                         ,
+2025-05-23 ,Easter               ,Friday of Week 5 of Easter                   ,Deuteronomy 4-6                         ,
+2025-05-24 ,Easter               ,Saturday of Week 5 of Easter                 ,Deuteronomy 7-9                         ,
+2025-05-25 ,Easter               ,6 Sunday of Easter                           ,Deuteronomy 10-12                       ,
+2025-05-26 ,Easter               ,Monday of Week 6 of Easter                   ,Deuteronomy 13-14                       ,
+2025-05-27 ,Easter               ,Tuesday of Week 6 of Easter                  ,Deuteronomy 15-16                       ,
+2025-05-28 ,Easter               ,Wednesday of Week 6 of Easter                ,Deuteronomy 17-20                       ,
+2025-05-29 ,Easter               ,ASCENSION DAY                                ,Deuteronomy 21-23                       ,
+2025-05-30 ,Easter               ,Friday of Week 6 of Easter                   ,Deuteronomy 24-27                       ,
+2025-05-31 ,Easter               ,Saturday of Week 6 of Easter                 ,Deuteronomy 28-29                       ,
+2025-06-01 ,Easter               ,7 Sunday of Easter                           ,Deuteronomy 30-31                       ,
+2025-06-02 ,Easter               ,Monday of Week 7 of Easter                   ,Deuteronomy 32-34                       ,
+2025-06-03 ,Easter               ,Tuesday of Week 7 of Easter                  ,                                        ,
+2025-06-04 ,Easter               ,Wednesday of Week 7 of Easter                ,                                        ,
+2025-06-05 ,Easter               ,Thursday of Week 7 of Easter                 ,                                        ,
+2025-06-06 ,Easter               ,Friday of Week 7 of Easter                   ,                                        ,
+2025-06-07 ,Easter               ,Saturday of Week 7 of Easter                 ,                                        ,
+2025-06-08 ,Easter               ,PENTECOST/WHITSUNDAY                         ,                                        ,Acts 1-2
+2025-06-09 ,Second Ordinary Time ,Monday of Week 0 of Second Ordinary Time     ,                                        ,Acts 3-4
+2025-06-10 ,Second Ordinary Time ,Tuesday of Week 0 of Second Ordinary Time    ,                                        ,Acts 5-6
+2025-06-11 ,Second Ordinary Time ,Wednesday of Week 0 of Second Ordinary Time  ,                                        ,Acts 7-8
+2025-06-12 ,Second Ordinary Time ,Thursday of Week 0 of Second Ordinary Time   ,                                        ,Acts 9-10
+2025-06-13 ,Second Ordinary Time ,Friday of Week 0 of Second Ordinary Time     ,                                        ,Acts 11-12
+2025-06-14 ,Second Ordinary Time ,Saturday of Week 0 of Second Ordinary Time   ,                                        ,Acts 13-14
+2025-06-15 ,Second Ordinary Time ,TRINITY SUNDAY                               ,                                        ,Acts 15-16
+2025-06-16 ,Second Ordinary Time ,Monday of Week 1 of Second Ordinary Time     ,                                        ,Acts 17-18
+2025-06-17 ,Second Ordinary Time ,Tuesday of Week 1 of Second Ordinary Time    ,                                        ,Acts 19-20
+2025-06-18 ,Second Ordinary Time ,Wednesday of Week 1 of Second Ordinary Time  ,                                        ,Acts 21-22
+2025-06-19 ,Second Ordinary Time ,Thursday of Week 1 of Second Ordinary Time   ,                                        ,Acts 23-24
+2025-06-20 ,Second Ordinary Time ,Friday of Week 1 of Second Ordinary Time     ,                                        ,Acts 25-26
+2025-06-21 ,Second Ordinary Time ,Saturday of Week 1 of Second Ordinary Time   ,                                        ,Acts 27-28
+2025-06-22 ,Second Ordinary Time ,2 Sunday of Second Ordinary Time             ,Joshua 1-4                              ,
+2025-06-23 ,Second Ordinary Time ,Monday of Week 2 of Second Ordinary Time     ,Joshua 5-8                              ,
+2025-06-24 ,Second Ordinary Time ,Tuesday of Week 2 of Second Ordinary Time    ,Joshua 9-12                             ,
+2025-06-25 ,Second Ordinary Time ,Wednesday of Week 2 of Second Ordinary Time  ,Joshua 13-21                            ,
+2025-06-26 ,Second Ordinary Time ,Thursday of Week 2 of Second Ordinary Time   ,Joshua 22-24                            ,
+2025-06-27 ,Second Ordinary Time ,Friday of Week 2 of Second Ordinary Time     ,Judges 1-3                              ,
+2025-06-28 ,Second Ordinary Time ,Saturday of Week 2 of Second Ordinary Time   ,Judges 4-5                              ,
+2025-06-29 ,Second Ordinary Time ,3 Sunday of Second Ordinary Time             ,Judges 6-8                              ,
+2025-06-30 ,Second Ordinary Time ,Monday of Week 3 of Second Ordinary Time     ,Judges 9-12                             ,
+2025-07-01 ,Second Ordinary Time ,Tuesday of Week 3 of Second Ordinary Time    ,Judges 13-15                            ,
+2025-07-02 ,Second Ordinary Time ,Wednesday of Week 3 of Second Ordinary Time  ,Judges 16-18                            ,
+2025-07-03 ,Second Ordinary Time ,Thursday of Week 3 of Second Ordinary Time   ,Judges 19-21                            ,
+2025-07-04 ,Second Ordinary Time ,Friday of Week 3 of Second Ordinary Time     ,Ruth 1-4                                ,
+2025-07-05 ,Second Ordinary Time ,Saturday of Week 3 of Second Ordinary Time   ,1 Samuel 1-3                            ,
+2025-07-06 ,Second Ordinary Time ,4 Sunday of Second Ordinary Time             ,1 Samuel 4-8                            ,
+2025-07-07 ,Second Ordinary Time ,Monday of Week 4 of Second Ordinary Time     ,1 Samuel 9-12                           ,
+2025-07-08 ,Second Ordinary Time ,Tuesday of Week 4 of Second Ordinary Time    ,1 Samuel 13-15                          ,
+2025-07-09 ,Second Ordinary Time ,Wednesday of Week 4 of Second Ordinary Time  ,1 Samuel 15-17                          ,
+2025-07-10 ,Second Ordinary Time ,Thursday of Week 4 of Second Ordinary Time   ,1 Samuel 18-20                          ,
+2025-07-11 ,Second Ordinary Time ,Friday of Week 4 of Second Ordinary Time     ,1 Samuel 21-24                          ,
+2025-07-12 ,Second Ordinary Time ,Saturday of Week 4 of Second Ordinary Time   ,1 Samuel 25-27                          ,
+2025-07-13 ,Second Ordinary Time ,5 Sunday of Second Ordinary Time             ,1 Samuel 28-31                          ,
+2025-07-14 ,Second Ordinary Time ,Monday of Week 5 of Second Ordinary Time     ,2 Samuel 1-3                            ,
+2025-07-15 ,Second Ordinary Time ,Tuesday of Week 5 of Second Ordinary Time    ,2 Samuel 4-8                            ,
+2025-07-16 ,Second Ordinary Time ,Wednesday of Week 5 of Second Ordinary Time  ,2 Samuel 9-12                           ,
+2025-07-17 ,Second Ordinary Time ,Thursday of Week 5 of Second Ordinary Time   ,2 Samuel 13-15                          ,
+2025-07-18 ,Second Ordinary Time ,Friday of Week 5 of Second Ordinary Time     ,2 Samuel 16-18                          ,
+2025-07-19 ,Second Ordinary Time ,Saturday of Week 5 of Second Ordinary Time   ,2 Samuel 19-21                          ,
+2025-07-20 ,Second Ordinary Time ,6 Sunday of Second Ordinary Time             ,2 Samuel 22-24                          ,
+2025-07-21 ,Second Ordinary Time ,Monday of Week 6 of Second Ordinary Time     ,1 Kings 1-4                             ,
+2025-07-22 ,Second Ordinary Time ,Tuesday of Week 6 of Second Ordinary Time    ,1 Kings 4-7                             ,
+2025-07-23 ,Second Ordinary Time ,Wednesday of Week 6 of Second Ordinary Time  ,1 Kings 8-10                            ,
+2025-07-24 ,Second Ordinary Time ,Thursday of Week 6 of Second Ordinary Time   ,1 Kings 11-13                           ,
+2025-07-25 ,Second Ordinary Time ,Friday of Week 6 of Second Ordinary Time     ,1 Kings 14-16                           ,
+2025-07-26 ,Second Ordinary Time ,Saturday of Week 6 of Second Ordinary Time   ,1 Kings 17-19                           ,
+2025-07-27 ,Second Ordinary Time ,7 Sunday of Second Ordinary Time             ,1 Kings 20-22                           ,
+2025-07-28 ,Second Ordinary Time ,Monday of Week 7 of Second Ordinary Time     ,2 Kings 1-3                             ,
+2025-07-29 ,Second Ordinary Time ,Tuesday of Week 7 of Second Ordinary Time    ,2 Kings 4-7                             ,
+2025-07-30 ,Second Ordinary Time ,Wednesday of Week 7 of Second Ordinary Time  ,2 Kings 8-11                            ,
+2025-07-31 ,Second Ordinary Time ,Thursday of Week 7 of Second Ordinary Time   ,2 Kings 12-14                           ,
+2025-08-01 ,Second Ordinary Time ,Friday of Week 7 of Second Ordinary Time     ,2 Kings 15-17                           ,
+2025-08-02 ,Second Ordinary Time ,Saturday of Week 7 of Second Ordinary Time   ,2 Kings 18-19                           ,
+2025-08-03 ,Second Ordinary Time ,8 Sunday of Second Ordinary Time             ,2 Kings 20-22                           ,
+2025-08-04 ,Second Ordinary Time ,Monday of Week 8 of Second Ordinary Time     ,2 Kings 23-25                           ,
+2025-08-05 ,Second Ordinary Time ,Tuesday of Week 8 of Second Ordinary Time    ,Isaiah 1-4                              ,
+2025-08-06 ,Second Ordinary Time ,Wednesday of Week 8 of Second Ordinary Time  ,Isaiah 5-8                              ,
+2025-08-07 ,Second Ordinary Time ,Thursday of Week 8 of Second Ordinary Time   ,Isaiah 9-12                             ,
+2025-08-08 ,Second Ordinary Time ,Friday of Week 8 of Second Ordinary Time     ,Isaiah 13-17                            ,
+2025-08-09 ,Second Ordinary Time ,Saturday of Week 8 of Second Ordinary Time   ,Isaiah 18-22                            ,
+2025-08-10 ,Second Ordinary Time ,9 Sunday of Second Ordinary Time             ,Isaiah 23-27                            ,
+2025-08-11 ,Second Ordinary Time ,Monday of Week 9 of Second Ordinary Time     ,Isaiah 28-30                            ,
+2025-08-12 ,Second Ordinary Time ,Tuesday of Week 9 of Second Ordinary Time    ,Isaiah 31-35                            ,
+2025-08-13 ,Second Ordinary Time ,Wednesday of Week 9 of Second Ordinary Time  ,Isaiah 36-38                            ,
+2025-08-14 ,Second Ordinary Time ,Thursday of Week 9 of Second Ordinary Time   ,Isaiah 39-41                            ,
+2025-08-15 ,Second Ordinary Time ,Friday of Week 9 of Second Ordinary Time     ,Isaiah 42-44                            ,
+2025-08-16 ,Second Ordinary Time ,Saturday of Week 9 of Second Ordinary Time   ,Isaiah 45-48                            ,
+2025-08-17 ,Second Ordinary Time ,10 Sunday of Second Ordinary Time            ,Isaiah 49-51                            ,
+2025-08-18 ,Second Ordinary Time ,Monday of Week 10 of Second Ordinary Time    ,Isaiah 52-54                            ,
+2025-08-19 ,Second Ordinary Time ,Tuesday of Week 10 of Second Ordinary Time   ,Isaiah 55-57                            ,
+2025-08-20 ,Second Ordinary Time ,Wednesday of Week 10 of Second Ordinary Time ,Isaiah 58-60                            ,
+2025-08-21 ,Second Ordinary Time ,Thursday of Week 10 of Second Ordinary Time  ,Isaiah 61-64                            ,
+2025-08-22 ,Second Ordinary Time ,Friday of Week 10 of Second Ordinary Time    ,Isaiah 65-66                            ,
+2025-08-23 ,Second Ordinary Time ,Saturday of Week 10 of Second Ordinary Time  ,Hosea 1-5                               ,Romans 1-2
+2025-08-24 ,Second Ordinary Time ,11 Sunday of Second Ordinary Time            ,Hosea 6-10                              ,Romans 3-4
+2025-08-25 ,Second Ordinary Time ,Monday of Week 11 of Second Ordinary Time    ,Hosea 11-14                             ,Romans 5-6
+2025-08-26 ,Second Ordinary Time ,Tuesday of Week 11 of Second Ordinary Time   ,Joel 1-3                                ,Romans 7-8
+2025-08-27 ,Second Ordinary Time ,Wednesday of Week 11 of Second Ordinary Time ,Amos 1-5                                ,Romans 9-10
+2025-08-28 ,Second Ordinary Time ,Thursday of Week 11 of Second Ordinary Time  ,Amos 6-9                                ,Romans 11-12
+2025-08-29 ,Second Ordinary Time ,Friday of Week 11 of Second Ordinary Time    ,Obadiah 1                               ,Romans 13-14
+2025-08-30 ,Second Ordinary Time ,Saturday of Week 11 of Second Ordinary Time  ,Jonah 1-4                               ,Romans 15-16
+2025-08-31 ,Second Ordinary Time ,12 Sunday of Second Ordinary Time            ,Micah 1-4                               ,1 Corinthians 1-2
+2025-09-01 ,Second Ordinary Time ,Monday of Week 12 of Second Ordinary Time    ,Micah 5-7                               ,1 Corinthians 3-4
+2025-09-02 ,Second Ordinary Time ,Tuesday of Week 12 of Second Ordinary Time   ,Nahum 1-3                               ,1 Corinthians 5-6
+2025-09-03 ,Second Ordinary Time ,Wednesday of Week 12 of Second Ordinary Time ,Habakkuk 1-3                            ,1 Corinthians 7-8
+2025-09-04 ,Second Ordinary Time ,Thursday of Week 12 of Second Ordinary Time  ,Zephaniah 1-3                           ,1 Corinthians 9-10
+2025-09-05 ,Second Ordinary Time ,Friday of Week 12 of Second Ordinary Time    ,Jeremiah 1-3                            ,1 Corinthians 11-12
+2025-09-06 ,Second Ordinary Time ,Saturday of Week 12 of Second Ordinary Time  ,Jeremiah 4-6                            ,1 Corinthians 13-14
+2025-09-07 ,Second Ordinary Time ,13 Sunday of Second Ordinary Time            ,Jeremiah 7-9                            ,1 Corinthians 15-16
+2025-09-08 ,Second Ordinary Time ,Monday of Week 13 of Second Ordinary Time    ,Jeremiah 10-13                          ,2 Corinthians 1-2
+2025-09-09 ,Second Ordinary Time ,Tuesday of Week 13 of Second Ordinary Time   ,Jeremiah 14-17                          ,2 Corinthians 3-4
+2025-09-10 ,Second Ordinary Time ,Wednesday of Week 13 of Second Ordinary Time ,Jeremiah 18-22                          ,2 Corinthians 5-6
+2025-09-11 ,Second Ordinary Time ,Thursday of Week 13 of Second Ordinary Time  ,Jeremiah 23-25                          ,2 Corinthians 7-8
+2025-09-12 ,Second Ordinary Time ,Friday of Week 13 of Second Ordinary Time    ,Jeremiah 26-29                          ,2 Corinthians 9-10
+2025-09-13 ,Second Ordinary Time ,Saturday of Week 13 of Second Ordinary Time  ,Jeremiah 30-32                          ,2 Corinthians 11-13
+2025-09-14 ,Second Ordinary Time ,14 Sunday of Second Ordinary Time            ,Jeremiah 33-36                          ,Galatians 1-2
+2025-09-15 ,Second Ordinary Time ,Monday of Week 14 of Second Ordinary Time    ,Jeremiah 37-39                          ,Galatians 3-4
+2025-09-16 ,Second Ordinary Time ,Tuesday of Week 14 of Second Ordinary Time   ,Jeremiah 40-44                          ,Galatians 5-6
+2025-09-17 ,Second Ordinary Time ,Wednesday of Week 14 of Second Ordinary Time ,Jeremiah 45-48                          ,Ephesians 1-2
+2025-09-18 ,Second Ordinary Time ,Thursday of Week 14 of Second Ordinary Time  ,Jeremiah 49-50                          ,Ephesians 3-4
+2025-09-19 ,Second Ordinary Time ,Friday of Week 14 of Second Ordinary Time    ,Jeremiah 51-52                          ,Ephesians 5-6
+2025-09-20 ,Second Ordinary Time ,Saturday of Week 14 of Second Ordinary Time  ,Lamentations 1-2                        ,
+2025-09-21 ,Second Ordinary Time ,15 Sunday of Second Ordinary Time            ,Lamentations 3                          ,
+2025-09-22 ,Second Ordinary Time ,Monday of Week 15 of Second Ordinary Time    ,Lamentations 4-5                        ,
+2025-09-23 ,Second Ordinary Time ,Tuesday of Week 15 of Second Ordinary Time   ,Ezekiel 1-4                             ,Philippians 1-2
+2025-09-24 ,Second Ordinary Time ,Wednesday of Week 15 of Second Ordinary Time ,Ezekiel 5-8                             ,Philippians 3-4
+2025-09-25 ,Second Ordinary Time ,Thursday of Week 15 of Second Ordinary Time  ,Ezekiel 9-12                            ,Colossians 1-2
+2025-09-26 ,Second Ordinary Time ,Friday of Week 15 of Second Ordinary Time    ,Ezekiel 13-15                           ,Colossians 3-4
+2025-09-27 ,Second Ordinary Time ,Saturday of Week 15 of Second Ordinary Time  ,Ezekiel 16-18                           ,1 Thessalonians 1-2
+2025-09-28 ,Second Ordinary Time ,16 Sunday of Second Ordinary Time            ,Ezekiel 19-21                           ,1 Thessalonians 3-4
+2025-09-29 ,Second Ordinary Time ,Monday of Week 16 of Second Ordinary Time    ,Ezekiel 22-24                           ,1 Thessalonians 5
+2025-09-30 ,Second Ordinary Time ,Tuesday of Week 16 of Second Ordinary Time   ,Ezekiel 25-27                           ,2 Thessalonians 1-3
+2025-10-01 ,Second Ordinary Time ,Wednesday of Week 16 of Second Ordinary Time ,Ezekiel 28-30                           ,
+2025-10-02 ,Second Ordinary Time ,Thursday of Week 16 of Second Ordinary Time  ,Ezekiel 31-33                           ,
+2025-10-03 ,Second Ordinary Time ,Friday of Week 16 of Second Ordinary Time    ,Ezekiel 34-36                           ,
+2025-10-04 ,Second Ordinary Time ,Saturday of Week 16 of Second Ordinary Time  ,Ezekiel 37-39                           ,
+2025-10-05 ,Second Ordinary Time ,Harvest                                      ,Ezekiel 40-44                           ,
+2025-10-06 ,Second Ordinary Time ,Monday of Week 17 of Second Ordinary Time    ,Ezekiel 45-48                           ,
+2025-10-07 ,Second Ordinary Time ,Tuesday of Week 17 of Second Ordinary Time   ,Ezra 1-3                                ,1 Timothy 1-3
+2025-10-08 ,Second Ordinary Time ,Wednesday of Week 17 of Second Ordinary Time ,Ezra 4-7                                ,1 Timothy 4-6
+2025-10-09 ,Second Ordinary Time ,Thursday of Week 17 of Second Ordinary Time  ,Ezra 8-10                               ,2 Timothy 1-4
+2025-10-10 ,Second Ordinary Time ,Friday of Week 17 of Second Ordinary Time    ,Nehemiah 1-3                            ,Titus 1-3
+2025-10-11 ,Second Ordinary Time ,Saturday of Week 17 of Second Ordinary Time  ,Nehemiah 4-6                            ,Philemon 1
+2025-10-12 ,Second Ordinary Time ,18 Sunday of Second Ordinary Time            ,Nehemiah 7-9                            ,Hebrews 1-2
+2025-10-13 ,Second Ordinary Time ,Monday of Week 18 of Second Ordinary Time    ,Nehemiah 10-11                          ,Hebrews 3-4
+2025-10-14 ,Second Ordinary Time ,Tuesday of Week 18 of Second Ordinary Time   ,Nehemiah 12-13                          ,Hebrews 5-6
+2025-10-15 ,Second Ordinary Time ,Wednesday of Week 18 of Second Ordinary Time ,Esther 1-5                              ,Hebrews 7-8
+2025-10-16 ,Second Ordinary Time ,Thursday of Week 18 of Second Ordinary Time  ,Esther 6-10                             ,Hebrews 9-10
+2025-10-17 ,Second Ordinary Time ,Friday of Week 18 of Second Ordinary Time    ,Daniel 1-3                              ,Hebrews 11-13
+2025-10-18 ,Second Ordinary Time ,Saturday of Week 18 of Second Ordinary Time  ,Daniel 4-6                              ,James 1-3
+2025-10-19 ,Second Ordinary Time ,19 Sunday of Second Ordinary Time            ,Daniel 7-9                              ,James 4-5
+2025-10-20 ,Second Ordinary Time ,Monday of Week 19 of Second Ordinary Time    ,Daniel 10-12                            ,1 Peter 1-2
+2025-10-21 ,Second Ordinary Time ,Tuesday of Week 19 of Second Ordinary Time   ,Haggai 1-2                              ,1 Peter 3-5
+2025-10-22 ,Second Ordinary Time ,Wednesday of Week 19 of Second Ordinary Time ,Zechariah 1-4                           ,2 Peter 1-3
+2025-10-23 ,Second Ordinary Time ,Thursday of Week 19 of Second Ordinary Time  ,Zechariah 5-8                           ,1 John 1-2
+2025-10-24 ,Second Ordinary Time ,Friday of Week 19 of Second Ordinary Time    ,Zechariah 9-14                          ,1 John 3-5
+2025-10-25 ,Second Ordinary Time ,Saturday of Week 19 of Second Ordinary Time  ,Malachi 1-2                             ,2 & 3 John 1
+2025-10-26 ,Second Ordinary Time ,20 Sunday of Second Ordinary Time            ,Malachi 3-4                             ,Jude 1
+2025-10-27 ,Second Ordinary Time ,Monday of Week 20 of Second Ordinary Time    ,1 Chronicles 1-10                       ,
+2025-10-28 ,Second Ordinary Time ,Tuesday of Week 20 of Second Ordinary Time   ,1 Chronicles 11-14                      ,
+2025-10-29 ,Second Ordinary Time ,Wednesday of Week 20 of Second Ordinary Time ,1 Chronicles 15-17                      ,
+2025-10-30 ,Second Ordinary Time ,Thursday of Week 20 of Second Ordinary Time  ,1 Chronicles 18-21                      ,
+2025-10-31 ,Second Ordinary Time ,Friday of Week 20 of Second Ordinary Time    ,1 Chronicles 22-24                      ,
+2025-11-01 ,Second Ordinary Time ,ALL SAINTS' DAY                              ,1 Chronicles 25-29                      ,
+2025-11-02 ,Second Ordinary Time ,21 Sunday of Second Ordinary Time            ,2 Chronicles 1-4                        ,
+2025-11-03 ,Second Ordinary Time ,Monday of Week 21 of Second Ordinary Time    ,2 Chronicles 5-8                        ,
+2025-11-04 ,Second Ordinary Time ,Tuesday of Week 21 of Second Ordinary Time   ,2 Chronicles 9-12                       ,
+2025-11-05 ,Second Ordinary Time ,Wednesday of Week 21 of Second Ordinary Time ,2 Chronicles 13-17                      ,
+2025-11-06 ,Second Ordinary Time ,Thursday of Week 21 of Second Ordinary Time  ,2 Chronicles 18-20                      ,
+2025-11-07 ,Second Ordinary Time ,Friday of Week 21 of Second Ordinary Time    ,2 Chronicles 21-24                      ,
+2025-11-08 ,Second Ordinary Time ,Saturday of Week 21 of Second Ordinary Time  ,2 Chronicles 25-27                      ,
+2025-11-09 ,Second Ordinary Time ,22 Sunday of Second Ordinary Time            ,2 Chronicles 28-31                      ,
+2025-11-10 ,Second Ordinary Time ,Monday of Week 22 of Second Ordinary Time    ,2 Chronicles 32-34                      ,
+2025-11-11 ,Second Ordinary Time ,Tuesday of Week 22 of Second Ordinary Time   ,2 Chronicles 35-36                      ,
+2025-11-12 ,Second Ordinary Time ,Wednesday of Week 22 of Second Ordinary Time ,                                        ,Revelation 1-3
+2025-11-13 ,Second Ordinary Time ,Thursday of Week 22 of Second Ordinary Time  ,                                        ,Revelation 4-6
+2025-11-14 ,Second Ordinary Time ,Friday of Week 22 of Second Ordinary Time    ,                                        ,Revelation 7-9
+2025-11-15 ,Second Ordinary Time ,Saturday of Week 22 of Second Ordinary Time  ,                                        ,Revelation 10-11
+2025-11-16 ,Second Ordinary Time ,23 Sunday of Second Ordinary Time            ,                                        ,Revelation 12-13
+2025-11-17 ,Second Ordinary Time ,Monday of Week 23 of Second Ordinary Time    ,                                        ,Revelation 14-16
+2025-11-18 ,Second Ordinary Time ,Tuesday of Week 23 of Second Ordinary Time   ,                                        ,Revelation 17-18
+2025-11-19 ,Second Ordinary Time ,Wednesday of Week 23 of Second Ordinary Time ,                                        ,Revelation 19-20
+2025-11-20 ,Second Ordinary Time ,Thursday of Week 23 of Second Ordinary Time  ,                                        ,Revelation 21-22
+2025-11-21 ,Second Ordinary Time ,Friday of Week 23 of Second Ordinary Time    ,                                        ,
+2025-11-22 ,Second Ordinary Time ,Saturday of Week 23 of Second Ordinary Time  ,                                        ,
+2025-11-23 ,Second Ordinary Time ,Christ the King                              ,                                        ,
+2025-11-24 ,Second Ordinary Time ,Monday of Week 24 of Second Ordinary Time    ,                                        ,
+2025-11-25 ,Second Ordinary Time ,Tuesday of Week 24 of Second Ordinary Time   ,                                        ,
+2025-11-26 ,Second Ordinary Time ,Wednesday of Week 24 of Second Ordinary Time ,                                        ,
+2025-11-27 ,Second Ordinary Time ,Thursday of Week 24 of Second Ordinary Time  ,                                        ,
+2025-11-28 ,Second Ordinary Time ,Friday of Week 24 of Second Ordinary Time    ,                                        ,
+2025-11-29 ,Second Ordinary Time ,Saturday of Week 24 of Second Ordinary Time  ,                                        ,

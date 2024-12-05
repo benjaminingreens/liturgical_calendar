@@ -1,0 +1,138 @@
+Date       ,Season    ,Day Name               ,OT Reading                              ,NT Reading
+2023-12-03 ,Advent    ,First Day of Season    ,Genesis 1:1-5 & 26-31; Genesis 3:1-15   ,
+2023-12-04 ,Advent    ,Second Day of Season   ,Genesis 12:1-7; Genesis 22:1-18         ,
+2023-12-05 ,Advent    ,3th Day of Season      ,Genesis 28:10-17; Genesis 49:8-12       ,
+2023-12-06 ,Advent    ,4th Day of Season      ,Exodus 3:1-12; Exodus 12:21-28          ,
+2023-12-07 ,Advent    ,5th Day of Season      ,Exodus 19:3-8; Exodus 20:1-17           ,
+2023-12-08 ,Advent    ,6th Day of Season      ,Exodus 25:1-9; Exodus 40:34-38          ,
+2023-12-09 ,Advent    ,First Sunday of Season ,Numbers 9:15-23; Numbers 24:15-19       ,
+2023-12-10 ,Advent    ,8th Day of Season      ,Deuteronomy 6:4-12; Joshua 1:1-9        ,
+2023-12-11 ,Advent    ,9th Day of Season      ,Judges 2:11-19; Ruth 4:13-17            ,
+2023-12-12 ,Advent    ,10th Day of Season     ,1 Samuel 8:1-22; 1 Samuel 16:1-13       ,
+2023-12-13 ,Advent    ,11th Day of Season     ,2 Samuel 7:8-16; Psalm 72:1-17          ,
+2023-12-14 ,Advent    ,12th Day of Season     ,1 Kings 8:22-30; 1 Kings 8:54-61        ,
+2023-12-15 ,Advent    ,13th Day of Season     ,1 Kings 11:9-13; 1 Kings 18:20-39       ,
+2023-12-16 ,Advent    ,2th Sunday of Season   ,2 Kings 25:1-12; Jeremiah 31:31-34      ,
+2023-12-17 ,Advent    ,15th Day of Season     ,Ezra 1:1-5; Nehemiah 8:1-12             ,
+2023-12-18 ,Advent    ,16th Day of Season     ,Isaiah 9:2-7; Micah 5:2-5               ,
+2023-12-19 ,Advent    ,17th Day of Season     ,Psalm 130:1-8; Isaiah 40:1-11           ,
+2023-12-20 ,Advent    ,18th Day of Season     ,Psalm 80:1-7 & 17-19; Jeremiah 33:14-16 ,
+2023-12-21 ,Advent    ,19th Day of Season     ,Habbakkuk 3:2-6 & 17-19; Psalm 85:8-13  ,
+2023-12-22 ,Advent    ,20th Day of Season     ,                                        ,Mark 1:1; Luke 1:1-38
+2023-12-23 ,Advent    ,3th Sunday of Season   ,                                        ,Luke 1:39-80
+2023-12-24 ,Advent    ,22th Day of Season     ,                                        ,Matthew 1:18-25; Isaiah 9:2-7
+2023-12-25 ,Christmas ,First Day of Season    ,                                        ,Luke 2:1-21
+2023-12-26 ,Christmas ,Second Day of Season   ,                                        ,
+2023-12-27 ,Christmas ,3th Day of Season      ,                                        ,
+2023-12-28 ,Christmas ,4th Day of Season      ,                                        ,
+2023-12-29 ,Christmas ,5th Day of Season      ,                                        ,
+2023-12-30 ,Christmas ,6th Day of Season      ,                                        ,
+2023-12-31 ,Christmas ,First Sunday of Season ,                                        ,
+2024-01-01 ,Christmas ,8th Day of Season      ,                                        ,
+2024-01-02 ,Christmas ,9th Day of Season      ,                                        ,
+2024-01-03 ,Christmas ,10th Day of Season     ,                                        ,
+2024-01-04 ,Christmas ,11th Day of Season     ,                                        ,
+2024-01-05 ,Christmas ,12th Day of Season     ,                                        ,
+2024-01-06 ,Epiphany  ,First Day of Season    ,                                        ,Matthew 2:1-12
+2024-01-07 ,Epiphany  ,Second Day of Season   ,                                        ,Matthew 2:13-23
+2024-01-08 ,Epiphany  ,3th Day of Season      ,                                        ,Unknown
+2024-01-09 ,Epiphany  ,4th Day of Season      ,                                        ,Unknown
+2024-01-10 ,Epiphany  ,5th Day of Season      ,                                        ,Unknown
+2024-01-11 ,Epiphany  ,6th Day of Season      ,                                        ,Unknown
+2024-01-12 ,Epiphany  ,First Sunday of Season ,                                        ,Unknown
+2024-01-13 ,Epiphany  ,8th Day of Season      ,                                        ,Matthew 3
+2024-01-14 ,Epiphany  ,9th Day of Season      ,                                        ,Matthew 4
+2024-01-15 ,Epiphany  ,10th Day of Season     ,                                        ,Matthew 5
+2024-01-16 ,Epiphany  ,11th Day of Season     ,                                        ,Matthew 6
+2024-01-17 ,Epiphany  ,12th Day of Season     ,                                        ,Matthew 7
+2024-01-18 ,Epiphany  ,13th Day of Season     ,                                        ,Matthew 8
+2024-01-19 ,Epiphany  ,2th Sunday of Season   ,                                        ,Matthew 9
+2024-01-20 ,Epiphany  ,15th Day of Season     ,                                        ,Matthew 10
+2024-01-21 ,Epiphany  ,16th Day of Season     ,                                        ,Matthew 11
+2024-01-22 ,Epiphany  ,17th Day of Season     ,                                        ,Matthew 12
+2024-01-23 ,Epiphany  ,18th Day of Season     ,                                        ,Matthew 13
+2024-01-24 ,Epiphany  ,19th Day of Season     ,                                        ,Matthew 14
+2024-01-25 ,Epiphany  ,20th Day of Season     ,                                        ,Matthew 15
+2024-01-26 ,Epiphany  ,3th Sunday of Season   ,                                        ,Matthew 16
+2024-01-27 ,Epiphany  ,22th Day of Season     ,                                        ,Matthew 17
+2024-01-28 ,Epiphany  ,23th Day of Season     ,                                        ,Matthew 18
+2024-01-29 ,Epiphany  ,24th Day of Season     ,                                        ,Matthew 19
+2024-01-30 ,Epiphany  ,25th Day of Season     ,                                        ,Matthew 20
+2024-01-31 ,Epiphany  ,26th Day of Season     ,                                        ,
+2024-02-01 ,Epiphany  ,27th Day of Season     ,                                        ,
+2024-02-02 ,Epiphany  ,4th Sunday of Season   ,                                        ,John 1:1-18
+2024-02-14 ,Lent      ,First Day of Season    ,Genesis 1-3                             ,
+2024-02-15 ,Lent      ,Second Day of Season   ,Genesis 4-7                             ,
+2024-02-16 ,Lent      ,3th Day of Season      ,Genesis 8-11                            ,
+2024-02-17 ,Lent      ,4th Day of Season      ,Genesis 12-15                           ,
+2024-02-18 ,Lent      ,5th Day of Season      ,Genesis 16-18                           ,
+2024-02-19 ,Lent      ,6th Day of Season      ,Genesis 19-21                           ,
+2024-02-20 ,Lent      ,First Sunday of Season ,Genesis 22-24                           ,
+2024-02-21 ,Lent      ,8th Day of Season      ,Genesis 25-28                           ,
+2024-02-22 ,Lent      ,9th Day of Season      ,Genesis 29-31                           ,
+2024-02-23 ,Lent      ,10th Day of Season     ,Genesis 32-34                           ,
+2024-02-24 ,Lent      ,11th Day of Season     ,Genesis 35-37                           ,
+2024-02-25 ,Lent      ,12th Day of Season     ,Genesis 38-40                           ,
+2024-02-26 ,Lent      ,13th Day of Season     ,Genesis 41-42                           ,
+2024-02-27 ,Lent      ,2th Sunday of Season   ,Genesis 43-45                           ,
+2024-02-28 ,Lent      ,15th Day of Season     ,Genesis 46-47                           ,
+2024-02-29 ,Lent      ,16th Day of Season     ,Genesis 48-50                           ,
+2024-03-01 ,Lent      ,17th Day of Season     ,                                        ,
+2024-03-02 ,Lent      ,18th Day of Season     ,                                        ,
+2024-03-03 ,Lent      ,19th Day of Season     ,Exodus 1-2                              ,John 12:12-19; Matthew 21:1-17
+2024-03-04 ,Lent      ,20th Day of Season     ,Exodus 3-4                              ,John 12:20-36; Matthew 21:18-46
+2024-03-05 ,Lent      ,3th Sunday of Season   ,Exodus 5-17:13                          ,John 12:37-50; Matthew 22:1-46
+2024-03-06 ,Lent      ,22th Day of Season     ,Exodus 7:14-10                          ,Matthew 23-24
+2024-03-07 ,Lent      ,23th Day of Season     ,Exodus 11-12                            ,John 13-16; Luke 22:1-38
+2024-03-08 ,Lent      ,24th Day of Season     ,                                        ,John 17-19; Matthew 26:36-27:61
+2024-03-09 ,Lent      ,25th Day of Season     ,                                        ,
+2024-03-31 ,Easter    ,First Day of Season    ,Exodus 13-15:21                         ,John 20:1-18; Matthew 27:62-28:10
+2024-04-01 ,Easter    ,Second Day of Season   ,Exodus 15:22-18                         ,John 20:19-31; Matthew 28:11-20
+2024-04-02 ,Easter    ,3th Day of Season      ,Exodus 19-21                            ,John 21
+2024-04-03 ,Easter    ,4th Day of Season      ,Exodus 22-24                            ,
+2024-04-04 ,Easter    ,5th Day of Season      ,Exodus 25-27                            ,
+2024-04-05 ,Easter    ,6th Day of Season      ,Exodus 28-29                            ,
+2024-04-06 ,Easter    ,First Sunday of Season ,Exodus 30-31                            ,
+2024-04-07 ,Easter    ,8th Day of Season      ,Exodus 32-34                            ,
+2024-04-08 ,Easter    ,9th Day of Season      ,Exodus 35-40                            ,
+2024-04-09 ,Easter    ,10th Day of Season     ,Leviticus 1-4                           ,
+2024-04-10 ,Easter    ,11th Day of Season     ,Leviticus 5-7                           ,
+2024-04-11 ,Easter    ,12th Day of Season     ,Leviticus 8-10                          ,
+2024-04-12 ,Easter    ,13th Day of Season     ,Leviticus 11-13                         ,
+2024-04-13 ,Easter    ,2th Sunday of Season   ,Leviticus 14-15                         ,
+2024-04-14 ,Easter    ,15th Day of Season     ,Leviticus 16-18                         ,
+2024-04-15 ,Easter    ,16th Day of Season     ,Leviticus 19-20                         ,
+2024-04-16 ,Easter    ,17th Day of Season     ,Leviticus 21-23                         ,
+2024-04-17 ,Easter    ,18th Day of Season     ,Leviticus 24-25                         ,
+2024-04-18 ,Easter    ,19th Day of Season     ,Leviticus 26-27                         ,
+2024-04-19 ,Easter    ,20th Day of Season     ,Numbers 1-4                             ,
+2024-04-20 ,Easter    ,3th Sunday of Season   ,Numbers 5-7                             ,
+2024-04-21 ,Easter    ,22th Day of Season     ,Numbers 8-10                            ,
+2024-04-22 ,Easter    ,23th Day of Season     ,Numbers 11-13                           ,
+2024-04-23 ,Easter    ,24th Day of Season     ,Numbers 14-16                           ,
+2024-04-24 ,Easter    ,25th Day of Season     ,Numbers 17-18                           ,
+2024-04-25 ,Easter    ,26th Day of Season     ,Numbers 19-21                           ,
+2024-04-26 ,Easter    ,27th Day of Season     ,Numbers 22-24                           ,
+2024-04-27 ,Easter    ,4th Sunday of Season   ,Numbers 25-27                           ,
+2024-04-28 ,Easter    ,29th Day of Season     ,Numbers 28-30                           ,
+2024-04-29 ,Easter    ,30th Day of Season     ,Numbers 31-32                           ,
+2024-04-30 ,Easter    ,31th Day of Season     ,Numbers 33-34                           ,
+2024-05-01 ,Easter    ,32th Day of Season     ,Numbers 35-36                           ,
+2024-05-02 ,Easter    ,33th Day of Season     ,Deuteronomy 1-3                         ,
+2024-05-03 ,Easter    ,34th Day of Season     ,Deuteronomy 4-6                         ,
+2024-05-04 ,Easter    ,5th Sunday of Season   ,Deuteronomy 7-9                         ,
+2024-05-05 ,Easter    ,36th Day of Season     ,Deuteronomy 10-12                       ,
+2024-05-06 ,Easter    ,37th Day of Season     ,Deuteronomy 13-14                       ,
+2024-05-07 ,Easter    ,38th Day of Season     ,Deuteronomy 15-16                       ,
+2024-05-08 ,Easter    ,39th Day of Season     ,Deuteronomy 17-20                       ,
+2024-05-09 ,Easter    ,40th Day of Season     ,Deuteronomy 21-23                       ,
+2024-05-10 ,Easter    ,41th Day of Season     ,Deuteronomy 24-27                       ,
+2024-05-11 ,Easter    ,6th Sunday of Season   ,Deuteronomy 28-29                       ,
+2024-05-12 ,Easter    ,43th Day of Season     ,Deuteronomy 30-31                       ,
+2024-05-13 ,Easter    ,44th Day of Season     ,Deuteronomy 32-34                       ,
+2024-05-14 ,Easter    ,45th Day of Season     ,                                        ,
+2024-05-15 ,Easter    ,46th Day of Season     ,                                        ,
+2024-05-16 ,Easter    ,47th Day of Season     ,                                        ,
+2024-05-17 ,Easter    ,48th Day of Season     ,                                        ,
+2024-05-18 ,Easter    ,7th Sunday of Season   ,                                        ,
+2024-05-19 ,Easter    ,50th Day of Season     ,                                        ,Acts 1-2

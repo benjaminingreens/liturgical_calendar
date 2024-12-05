@@ -110,6 +110,8 @@ def liturgical_calendar_markdown(year):
     ordinary_time_second_start = pentecost + timedelta(days=1)
     ordinary_time_second_end = christ_the_king + timedelta(days=6)
 
+    celebratory_days = []
+
     principal_feasts = {
         "CHRISTMAS DAY": christmas_day,
         "EPIPHANY": epiphany,
@@ -121,19 +123,23 @@ def liturgical_calendar_markdown(year):
         "TRINITY SUNDAY": trinity_sunday,
         "ALL SAINTS' DAY": all_saints_day,
     }
+    celebratory_days.append(principal_feasts)
 
     principal_holy_days = {
         "Ash Wednesday": ash_wednesday,
         "Maundy Thursday": maundy_thursday,
         "Good Friday": good_friday,
     }
+    celebratory_days.append(principal_holy_days)
 
     festivals = {
         "Baptism of Christ": baptism_of_christ,
         "Christ the King": christ_the_king,
     }
+    celebratory_days.append(festivals)
 
     lesser_festivals = {}
+    celebratory_days.append(lesser_festivals)
 
     other_liturgical = {
         "Shrove Tuesday (Pancake Day)": shrove_tuesday,
@@ -144,12 +150,14 @@ def liturgical_calendar_markdown(year):
         "Holy Saturday": holy_saturday,
         "Harvest": harvest,
     }
+    celebratory_days.append(other_liturgical)
 
     other_other = {
         "Boxing Day": boxing_day,
         "New Year's Day": new_years_day,
         "St. Valentine's Day": valentines_day,
     }
+    celebratory_days.append(other_other)
 
     seasons = [
         ("Advent", advent_start, christmas_day - timedelta(days=1)),
@@ -221,16 +229,246 @@ Other Days\n
 
             markdown += "\n"  # Newline after each season
 
-    return markdown.strip()
+    return markdown.strip(), seasons, celebratory_days
+
 
 year = 2025
 
 # Example usage for the year 2024
-markdown_content = liturgical_calendar_markdown(year)
+markdown_content, seasons, celebratory_days = liturgical_calendar_markdown(year)
 
 # Save the markdown to a file
-file_path = f"liturgical_calendar_{year}.md"
-with open(file_path, "w") as file:
-    file.write(markdown_content)
+if True:
+    file_path = f"liturgical_calendar_{year}.md"
+    with open(file_path, "w") as file:
+        file.write(markdown_content)
 
-print(f"Markdown file saved as {file_path}")
+    print(f"Markdown file saved as {file_path}")
+
+# --- ADDITIONAL FUNCTIONALITY TO GENERATE LEXICON CSV ---
+
+import csv
+
+
+def combine_carried_over_readings(lexicon):
+    """Combine 'Carried Over Days' with existing days while keeping the day name unchanged."""
+    readings_by_date = {}
+
+    for entry in lexicon:
+        date, season, day_name, ot_reading, nt_reading = entry
+        if date not in readings_by_date:
+            readings_by_date[date] = {
+                "season": season,
+                "day_name": day_name,  # Keep the original day name
+                "ot_reading": ot_reading,
+                "nt_reading": nt_reading,
+            }
+        else:
+            # Merge readings without modifying the day name
+            if not readings_by_date[date]["nt_reading"] and nt_reading:
+                readings_by_date[date]["nt_reading"] = nt_reading
+            if not readings_by_date[date]["ot_reading"] and ot_reading:
+                readings_by_date[date]["ot_reading"] = ot_reading
+
+    # Reconstruct lexicon in sorted order by date
+    combined_lexicon = [
+        (
+            date,
+            values["season"],
+            values["day_name"],
+            values["ot_reading"],
+            values["nt_reading"],
+        )
+        for date, values in sorted(readings_by_date.items())
+    ]
+
+    return combined_lexicon
+
+
+def assign_readings(
+    season_name,
+    season_start,
+    season_end,
+    readings,
+    reverse=False,
+    baptism_adjust=False,
+    carry_over_to=None,
+    carry_over_readings=None,
+    celebratory_days=celebratory_days,
+):
+    num_days = (season_end - season_start).days + 1
+    daily_readings = readings.get(season_name, [])
+    new_carry_over_readings = []
+
+    (
+        principal_feasts,
+        principal_holy_days,
+        festivals,
+        lesser_festivals,
+        other_liturgical,
+        other_other,
+    ) = celebratory_days
+
+    # Combine all named days into a single dictionary
+    named_days = {
+        **principal_feasts,
+        **principal_holy_days,
+        **festivals,
+        **lesser_festivals,
+        **other_liturgical,
+        **other_other,
+    }
+
+    week_number = 0  # Internal week counter
+    assigned_readings = []
+
+    for i in range(num_days):
+        current_date = season_start + timedelta(days=i)
+        ot_reading, nt_reading = "", ""
+
+        # Determine the name of the day
+        if current_date in named_days.values():
+            day_name = [key for key, value in named_days.items() if value == current_date][0]
+            # If it's a Sunday, increment the week count for subsequent weekdays
+            if current_date.weekday() == 6:
+                week_number += 1
+        else:
+            # For Sundays, increment the week counter
+            if current_date.weekday() == 6:  # Sunday
+                week_number += 1
+                day_name = f"{week_number} Sunday of {season_name}"
+            else:
+                # Use the most recent Sunday week number for weekdays
+                day_of_week = current_date.strftime("%A")
+                day_name = f"{day_of_week} of Week {week_number} of {season_name}"
+
+        # Use readings if provided
+        if i < len(daily_readings):
+            ot_reading, nt_reading = daily_readings[i][1:]
+
+        assigned_readings.append(
+            (current_date, season_name, day_name, ot_reading, nt_reading)
+        )
+
+    # Handle carry-over readings for the next season
+    if carry_over_to is not None and carry_over_readings is not None:
+        carry_over_readings.extend(new_carry_over_readings)
+    elif carry_over_to is not None:
+        carry_over_readings = new_carry_over_readings
+
+    return assigned_readings, carry_over_readings
+
+
+# Add reverse flags dynamically
+def add_reverse_flags(seasons):
+    reverse_mapping = {
+        "Advent": True,
+        "Christmas": False,
+        "Epiphany": False,
+        "First Ordinary Time": False,
+        "Lent": False,
+        "Easter": False,
+        "Second Ordinary Time": False,
+    }
+    return [
+        (season_name, start, end, reverse_mapping.get(season_name, False))
+        for season_name, start, end in seasons
+    ]
+
+
+def generate_lexicon_csv(year, readings_file, output_file):
+    # Get seasons by calling the liturgical_calendar_markdown function
+    _, raw_seasons, celebratory_days = liturgical_calendar_markdown(year)
+
+    # Debug: Print seasons
+    print(f"Raw seasons: {raw_seasons}")
+
+    # Add reverse flags to the seasons
+    seasons = add_reverse_flags(raw_seasons)
+
+    # Debug: Print seasons with reverse flags
+    print(f"Seasons with reverse flags: {seasons}")
+
+    # Load readings from the CSV file
+    readings = {}
+    with open(readings_file, mode="r") as file:
+        reader = csv.DictReader(file)
+        for row in reader:
+            season = row["SEASON"].strip()
+            day = row.get("DAY", "").strip() if row.get("DAY") else ""
+            ot_reading = row["OT READING"].strip() if row["OT READING"] else ""
+            nt_reading = row["NT YEAR A"].strip() if row["NT YEAR A"] else ""
+            if season not in readings:
+                readings[season] = []
+            readings[season].append((day, ot_reading, nt_reading))
+
+    # Debug: Print loaded readings
+    print(f"Loaded readings: {readings}")
+
+    # Assign readings to each date
+    lexicon = []
+    carry_over_readings = []
+    for season_name, season_start, season_end, reverse in seasons:
+        baptism_adjust = season_name == "Epiphany"
+        carry_over_to = "Lent" if season_name == "First Ordinary Time" else None
+        season_readings, carry_over_readings = assign_readings(
+            season_name,
+            season_start,
+            season_end,
+            readings,
+            reverse=reverse,
+            baptism_adjust=baptism_adjust,
+            carry_over_to=carry_over_to,
+            carry_over_readings=carry_over_readings,
+            celebratory_days=celebratory_days,
+        )
+        lexicon.extend(season_readings)
+
+        # Debug: Print assigned readings for the season
+        print(f"Assigned readings for {season_name}:")
+        for reading in season_readings:
+            print(reading)
+
+        # Debug: Print carry-over readings after assignment
+        print(f"Carry-over readings after {season_name}: {carry_over_readings}")
+
+    # Append carry-over readings to Lent
+    lent_start = [s for s in seasons if s[0] == "Lent"][0][1]
+    for i, (day_name, _, nt_reading) in enumerate(carry_over_readings):
+        lexicon.append(
+            (lent_start + timedelta(days=i), "Lent", day_name, "", nt_reading)
+        )
+
+        # Debug: Print carry-over reading being appended
+        print(
+            f"Appending carry-over reading to Lent: {lent_start + timedelta(days=i)}, {day_name}, {nt_reading}"
+        )
+
+    # Combine 'Carried Over Days' with existing days where there is no clash
+    lexicon = combine_carried_over_readings(lexicon)
+
+    # Debug: Print lexicon after combining carried-over readings
+    print("Lexicon after combining carried-over readings:")
+    for entry in lexicon:
+        print(entry)
+
+    # Write the lexicon to a CSV
+    with open(output_file, mode="w", newline="") as file:
+        writer = csv.writer(file)
+        writer.writerow(["Date", "Season", "Day Name", "OT Reading", "NT Reading"])
+        for entry in sorted(lexicon, key=lambda x: x[0]):
+            writer.writerow(entry)
+
+    print(f"Lexicon CSV saved as {output_file}")
+
+
+# Main function to generate lexicon CSV
+def main(year):
+    year = year
+    readings_file = "bible_plan.csv"  # Replace with your readings CSV
+    output_file = f"liturgical_calendar_lexicon_{year}.csv"
+    generate_lexicon_csv(year, readings_file, output_file)
+
+
+if __name__ == "__main__":
+    main(year)
