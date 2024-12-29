@@ -49,11 +49,12 @@ def load_readings(csv_file):
         for row in reader:
             season = row["SEASON"].strip() if row["SEASON"] else ""
             day = row.get("DAY", "").strip() if row.get("DAY") else ""
+            meditation = row.get("Meditation", "").strip() if row.get("Meditation") else ""
             ot_reading = row["OT READING"].strip() if row["OT READING"] else ""
             nt_reading = row.get("NT YEAR A", "").strip() if row.get("NT YEAR A") else ""
             if season not in readings:
                 readings[season] = []
-            readings[season].append((day, ot_reading, nt_reading))
+            readings[season].append((day, meditation, ot_reading, nt_reading))
     return readings
 
 # Function to adjust readings based on the number of days in the season
@@ -102,29 +103,29 @@ def assign_readings(season, start_date, num_days, readings, reverse=False, bapti
     daily_readings = adjust_readings(season, readings.get(season, []), num_days, reverse)
     assigned_readings = []
 
-    for i, (day_name, ot_reading, nt_reading) in enumerate(daily_readings):
+    for i, (day_name, meditation, ot_reading, nt_reading) in enumerate(daily_readings):
         current_date = start_date + timedelta(days=i)
         day_name = get_day_name(current_date, start_date)
         if baptism_adjust and "Baptism" in day_name:
             # Adjust for baptism readings in Epiphany
             if i == 1:
                 assigned_readings[-1] = (assigned_readings[-1][0], assigned_readings[-1][1],
-                                         assigned_readings[-1][2] + f"; {nt_reading}")
+                                         assigned_readings[-1][2], assigned_readings[-1][3], meditation, nt_reading)
             continue
-        assigned_readings.append((current_date, season, day_name, ot_reading, nt_reading))
+        assigned_readings.append((current_date, season, day_name, meditation, ot_reading, nt_reading))
     return assigned_readings
 
 # Write the calendar to a new CSV file
 def write_calendar_to_csv(calendar, output_file):
     with open(output_file, mode="w", newline="") as file:
         writer = csv.writer(file)
-        writer.writerow(["Date", "Season", "Day Name", "OT Reading", "NT Reading"])
+        writer.writerow(["Date", "Season", "Day Name", "Meditation", "OT Reading", "NT Reading"])
         for entry in calendar:
             writer.writerow(entry)
 
 # Main function
 def main():
-    year = 2024
+    year = 2025
     readings_file = "bible_plan.csv"
     output_file = f"liturgical_calendar_readings_{year}.csv"
 

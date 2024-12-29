@@ -249,17 +249,17 @@ if True:
 
 import csv
 
-
 def combine_carried_over_readings(lexicon):
     """Combine 'Carried Over Days' with existing days while keeping the day name unchanged."""
     readings_by_date = {}
 
     for entry in lexicon:
-        date, season, day_name, ot_reading, nt_reading = entry
+        date, season, day_name, meditation, ot_reading, nt_reading = entry
         if date not in readings_by_date:
             readings_by_date[date] = {
                 "season": season,
                 "day_name": day_name,  # Keep the original day name
+                "meditation": meditation,
                 "ot_reading": ot_reading,
                 "nt_reading": nt_reading,
             }
@@ -269,6 +269,8 @@ def combine_carried_over_readings(lexicon):
                 readings_by_date[date]["nt_reading"] = nt_reading
             if not readings_by_date[date]["ot_reading"] and ot_reading:
                 readings_by_date[date]["ot_reading"] = ot_reading
+            if not readings_by_date[date]["meditation"] and meditation:
+                readings_by_date[date]["meditation"] = meditation
 
     # Reconstruct lexicon in sorted order by date
     combined_lexicon = [
@@ -276,6 +278,7 @@ def combine_carried_over_readings(lexicon):
             date,
             values["season"],
             values["day_name"],
+            values["meditation"],
             values["ot_reading"],
             values["nt_reading"],
         )
@@ -284,6 +287,84 @@ def combine_carried_over_readings(lexicon):
 
     return combined_lexicon
 
+def adjust_annunciation_readings(lexicon, annunciation_date):
+    """Adjust readings around Annunciation based on provided logic."""
+    adjusted_lexicon = []
+    readings_by_date = {entry[0]: entry for entry in lexicon}
+
+    # Determine OT readings for days around Annunciation
+    days = [
+        annunciation_date - timedelta(days=2),
+        annunciation_date - timedelta(days=1),
+        annunciation_date,
+        annunciation_date + timedelta(days=1),
+        annunciation_date + timedelta(days=2),
+    ]
+
+    # Collect OT readings for the relevant days
+    ot_readings = {day: readings_by_date.get(day, (None, None, None, None, "", None))[4] for day in days}
+
+    # Handle the case where Annunciation has no readings
+    if not ot_readings[annunciation_date]:
+        ot_readings[annunciation_date] = ""
+
+    # Split Annunciation readings if present
+    if ot_readings[annunciation_date]:
+        chapters = ot_readings[annunciation_date].split(",")
+        mid = len(chapters) // 2
+        above_split = ",".join(chapters[:mid])
+        below_split = ",".join(chapters[mid:])
+    else:
+        above_split = below_split = ""
+
+    # Combine readings
+    combined_readings_before = ot_readings[days[0]]
+    if ot_readings[days[1]]:
+        combined_readings_before = (combined_readings_before + "," + ot_readings[days[1]]).strip(",")
+    combined_readings_before = (combined_readings_before + "," + above_split).strip(",")
+
+    combined_readings_after = below_split
+    if ot_readings[days[3]]:
+        combined_readings_after = (combined_readings_after + "," + ot_readings[days[3]]).strip(",")
+    combined_readings_after = (combined_readings_after + "," + ot_readings[days[4]]).strip(",")
+
+    # Update readings in the lexicon
+    if combined_readings_before:
+        readings_by_date[days[0]] = (
+            days[0],
+            readings_by_date.get(days[0], (None, None, None, None, "", None))[1],
+            readings_by_date.get(days[0], (None, None, None, None, "", None))[2],
+            readings_by_date.get(days[0], (None, None, None, None, "", None))[3],
+            combined_readings_before,
+            readings_by_date.get(days[0], (None, None, None, None, "", None))[5],
+        )
+
+    if combined_readings_after:
+        readings_by_date[days[4]] = (
+            days[4],
+            readings_by_date.get(days[4], (None, None, None, None, "", None))[1],
+            readings_by_date.get(days[4], (None, None, None, None, "", None))[2],
+            readings_by_date.get(days[4], (None, None, None, None, "", None))[3],
+            combined_readings_after,
+            readings_by_date.get(days[4], (None, None, None, None, "", None))[5],
+        )
+
+    # Clear readings for Annunciation and adjacent days
+    for day in [days[1], annunciation_date, days[3]]:
+        readings_by_date[day] = (
+            day,
+            readings_by_date.get(day, (None, None, None, None, "", None))[1],
+            readings_by_date.get(day, (None, None, None, None, "", None))[2],
+            readings_by_date.get(day, (None, None, None, None, "", None))[3],
+            "",
+            readings_by_date.get(day, (None, None, None, None, "", None))[5],
+        )
+
+    # Reconstruct lexicon
+    for date, entry in sorted(readings_by_date.items()):
+        adjusted_lexicon.append(entry)
+
+    return adjusted_lexicon
 
 def assign_readings(
     season_name,
@@ -330,67 +411,9 @@ def assign_readings(
             suffix = {1: "st", 2: "nd", 3: "rd"}.get(n % 10, "th")
         return f"{n}{suffix}"
 
-    # Adjust Advent readings to cut the top, keeping the final readings fixed
-    if season_name == "Advent" and len(daily_readings) > num_days:
-        daily_readings = daily_readings[-num_days:]  # Keep the last `num_days` readings
-
-    # Adjust readings for Baptism date in Epiphany
-    if baptism_adjust and season_name == "Epiphany":
-        baptism_day = first_sunday_after(season_start)  # First Sunday after Epiphany
-        print(f"Baptism Day identified as {baptism_day}")
-
-        # Shift readings to ensure Matthew 3 on Baptism day
-        baptism_index = (baptism_day - season_start).days
-        print(f"Baptism Index in readings: {baptism_index}")
-
-        if baptism_index < len(daily_readings):
-            # Ensure Matthew 3 on Baptism Day
-            daily_readings[baptism_index] = (
-                "Baptism of Christ",
-                "",
-                "Matthew 3",
-            )
-
-        # Adjust readings for earlier days (ensure Matthew 2 on the first day if Baptism is on day 2)
-        if baptism_index == 1:
-            daily_readings[0] = ("Epiphany Day", "", "Matthew 2")
-
-        # Shift later readings accordingly
-        post_baptism_readings = [
-            ("", "Matthew 4"),
-            ("", "Matthew 5"),
-            ("", "Matthew 6"),
-            ("", "Matthew 7"),
-            ("", "Matthew 8"),
-            ("", "Matthew 9"),
-            ("", "Matthew 10"),
-            ("", "Matthew 11"),
-            ("", "Matthew 12"),
-            ("", "Matthew 13"),
-            ("", "Matthew 14"),
-            ("", "Matthew 15"),
-            ("", "Matthew 16"),
-            ("", "Matthew 17"),
-            ("", "Matthew 18"),
-            ("", "Matthew 19"),
-            ("", "Matthew 20"),
-        ]
-        for i, reading in enumerate(post_baptism_readings, start=baptism_index + 1):
-            if i < len(daily_readings):
-                daily_readings[i] = ("Epiphany Continuation", reading[0], reading[1])
-
-        # Ensure John 1:1–18 on the last day of Epiphany
-        epiphany_end_index = num_days - 1
-        if epiphany_end_index < len(daily_readings):
-            daily_readings[epiphany_end_index] = (
-                "Last Day of Epiphany",
-                "",
-                "John 1:1-18",
-            )
-
     for i in range(num_days):
         current_date = season_start + timedelta(days=i)
-        ot_reading, nt_reading = "", ""
+        meditation, ot_reading, nt_reading = "", "", ""
 
         # Determine the name of the day
         if current_date in named_days.values():
@@ -403,18 +426,18 @@ def assign_readings(
             if current_date.weekday() == 6:  # Sunday
                 week_number += 1
                 ordinal = to_ordinal(week_number)
-                day_name = f"{ordinal} Sunday of {season_name}"
+                day_name = f"{ordinal} Sunday"
             else:
                 # Use the most recent Sunday week number for weekdays
                 day_of_week = current_date.strftime("%A")
-                day_name = f"{day_of_week} of Week {week_number} of {season_name}"
+                day_name = f"{day_of_week} of Week {week_number}"
 
         # Use readings if provided
         if i < len(daily_readings):
-            ot_reading, nt_reading = daily_readings[i][1:]
+            meditation, ot_reading, nt_reading = daily_readings[i][1:]
 
         assigned_readings.append(
-            (current_date, season_name, day_name, ot_reading, nt_reading)
+            (current_date, season_name, day_name, meditation, ot_reading, nt_reading)
         )
 
     # Handle carry-over readings for the next season
@@ -425,8 +448,6 @@ def assign_readings(
 
     return assigned_readings, carry_over_readings
 
-
-# Add reverse flags dynamically
 def add_reverse_flags(seasons):
     reverse_mapping = {
         "Advent": True,
@@ -442,19 +463,13 @@ def add_reverse_flags(seasons):
         for season_name, start, end in seasons
     ]
 
-
+# Main function to generate lexicon CSV
 def generate_lexicon_csv(year, readings_file, output_file):
     # Get seasons by calling the liturgical_calendar_markdown function
     _, raw_seasons, celebratory_days = liturgical_calendar_markdown(year)
 
-    # Debug: Print seasons
-    print(f"Raw seasons: {raw_seasons}")
-
     # Add reverse flags to the seasons
     seasons = add_reverse_flags(raw_seasons)
-
-    # Debug: Print seasons with reverse flags
-    print(f"Seasons with reverse flags: {seasons}")
 
     # Load readings from the CSV file
     readings = {}
@@ -463,14 +478,12 @@ def generate_lexicon_csv(year, readings_file, output_file):
         for row in reader:
             season = row["SEASON"].strip()
             day = row.get("DAY", "").strip() if row.get("DAY") else ""
+            meditation = row.get("Meditation", "").strip() if row.get("Meditation") else ""
             ot_reading = row["OT READING"].strip() if row["OT READING"] else ""
             nt_reading = row["NT YEAR A"].strip() if row["NT YEAR A"] else ""
             if season not in readings:
                 readings[season] = []
-            readings[season].append((day, ot_reading, nt_reading))
-
-    # Debug: Print loaded readings
-    print(f"Loaded readings: {readings}")
+            readings[season].append((day, meditation, ot_reading, nt_reading))
 
     # Assign readings to each date
     lexicon = []
@@ -491,38 +504,24 @@ def generate_lexicon_csv(year, readings_file, output_file):
         )
         lexicon.extend(season_readings)
 
-        # Debug: Print assigned readings for the season
-        print(f"Assigned readings for {season_name}:")
-        for reading in season_readings:
-            print(reading)
-
-        # Debug: Print carry-over readings after assignment
-        print(f"Carry-over readings after {season_name}: {carry_over_readings}")
-
     # Append carry-over readings to Lent
     lent_start = [s for s in seasons if s[0] == "Lent"][0][1]
-    for i, (day_name, _, nt_reading) in enumerate(carry_over_readings):
+    for i, (day_name, meditation, nt_reading) in enumerate(carry_over_readings):
         lexicon.append(
-            (lent_start + timedelta(days=i), "Lent", day_name, "", nt_reading)
+            (lent_start + timedelta(days=i), "Lent", day_name, meditation, "", nt_reading)
         )
 
-        # Debug: Print carry-over reading being appended
-        print(
-            f"Appending carry-over reading to Lent: {lent_start + timedelta(days=i)}, {day_name}, {nt_reading}"
-        )
+    # Adjust Annunciation readings
+    annunciation_date = celebratory_days[0]["ANNUNCIATION"]
+    lexicon = adjust_annunciation_readings(lexicon, annunciation_date)
 
     # Combine 'Carried Over Days' with existing days where there is no clash
     lexicon = combine_carried_over_readings(lexicon)
 
-    # Debug: Print lexicon after combining carried-over readings
-    print("Lexicon after combining carried-over readings:")
-    for entry in lexicon:
-        print(entry)
-
     # Write the lexicon to a CSV
     with open(output_file, mode="w", newline="") as file:
         writer = csv.writer(file)
-        writer.writerow(["Date", "Season", "Day Name", "OT Reading", "NT Reading"])
+        writer.writerow(["Date", "Season", "Day Name", "Meditation", "OT Reading", "NT Reading"])
         for entry in sorted(lexicon, key=lambda x: x[0]):
             writer.writerow(entry)
 
@@ -534,8 +533,7 @@ def ordinal(n):
         suffix = "th"
     else:
         suffix = {1: "st", 2: "nd", 3: "rd"}.get(n % 10, "th")
-    return f"{n}{suffix}"
-
+        return f"{n}{suffix}"
 
 # Main function to generate lexicon CSV
 def main(year):
@@ -544,6 +542,9 @@ def main(year):
     output_file = f"liturgical_calendar_lexicon_{year}.csv"
     generate_lexicon_csv(year, readings_file, output_file)
 
-
 if __name__ == "__main__":
     main(year)
+
+
+# John readings should keep going in lent if fot is too short
+# harvest, all saints, christ the king
