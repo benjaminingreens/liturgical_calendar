@@ -394,11 +394,22 @@ def assign_readings(
     baptism_adjust=False,
     carry_over_to=None,
     carry_over_readings=None,
-    celebratory_days=celebratory_days,
+    celebratory_days=None,
 ):
+    """
+    Assign readings to dates in a season. Handles reverse logic for seasons like Advent
+    and ensures critical readings remain in place.
+    """
     num_days = (season_end - season_start).days + 1
     daily_readings = readings.get(season_name, [])
-    new_carry_over_readings = []
+
+    # Ensure Micah/Matthew readings stay on 24th December for Advent
+    if reverse and season_name == "Advent":
+        # Calculate how many readings need to be truncated
+        readings_to_keep = min(num_days, len(daily_readings))
+        daily_readings = daily_readings[-readings_to_keep:]  # Truncate from the top
+    else:
+        daily_readings = daily_readings[:num_days]  # Truncate from the bottom
 
     (
         principal_feasts,
@@ -430,42 +441,98 @@ def assign_readings(
             suffix = {1: "st", 2: "nd", 3: "rd"}.get(n % 10, "th")
         return f"{n}{suffix}"
 
-    for i in range(num_days):
-        current_date = season_start + timedelta(days=i)
+    # Create date range
+    date_range = [season_start + timedelta(days=i) for i in range(num_days)]
+
+    # Assign readings to each date
+    for i, current_date in enumerate(date_range):
         meditation, ot_reading, nt_reading = "", "", ""
 
         # Determine the name of the day
         if current_date in named_days.values():
             day_name = [key for key, value in named_days.items() if value == current_date][0]
-            # If it's a Sunday, increment the week count for subsequent weekdays
-            if current_date.weekday() == 6:
+            if current_date.weekday() == 6:  # Sunday
                 week_number += 1
         else:
-            # For Sundays, increment the week counter and use ordinal for naming
             if current_date.weekday() == 6:  # Sunday
                 week_number += 1
                 ordinal = to_ordinal(week_number)
                 day_name = f"{ordinal} Sunday"
             else:
-                # Use the most recent Sunday week number for weekdays
                 day_of_week = current_date.strftime("%A")
                 day_name = f"{day_of_week} of Week {week_number}"
 
-        # Use readings if provided
+        # Use readings if available
         if i < len(daily_readings):
             meditation, ot_reading, nt_reading = daily_readings[i][1:]
 
+        # Append the assigned reading
         assigned_readings.append(
             (current_date, season_name, day_name, meditation, ot_reading, nt_reading)
         )
 
     # Handle carry-over readings for the next season
     if carry_over_to is not None and carry_over_readings is not None:
-        carry_over_readings.extend(new_carry_over_readings)
+        carry_over_readings.extend(daily_readings[len(date_range):])
     elif carry_over_to is not None:
-        carry_over_readings = new_carry_over_readings
+        carry_over_readings = daily_readings[len(date_range):]
 
     return assigned_readings, carry_over_readings
+
+def append_unfinished_john_readings_to_lent(lexicon, first_ordinary_time_end, lent_start):
+    """Append any unassigned John readings from First Ordinary Time into Lent."""
+    john_readings = [
+        "John 1:1-18", "John 1:19-34", "John 1:35-51", "John 2", "John 3", "John 4",
+        "John 5", "John 6", "John 7", "John 8", "John 9", "John 10", "John 11", "John 12:1-11"
+    ]
+    
+    # Collect assigned John readings from First Ordinary Time
+    assigned_readings = [
+        entry[5] for entry in lexicon
+        if entry[0] <= first_ordinary_time_end and entry[5] and "John" in entry[5]
+    ]
+    
+    # Remove assigned readings from the John readings list
+    for reading in assigned_readings:
+        if reading in john_readings:
+            john_readings.remove(reading)
+    
+    # Append remaining John readings to Lent
+    readings_by_date = {entry[0]: entry for entry in lexicon}
+    current_date = lent_start
+
+    for reading in john_readings:
+        # Get existing Lent readings for the date
+        ot_reading = readings_by_date.get(current_date, (None, "", "", "", "", ""))[4]
+        nt_reading = readings_by_date.get(current_date, (None, "", "", "", "", ""))[5]
+
+        # Update the NT column with John readings
+        readings_by_date[current_date] = (
+            current_date,
+            readings_by_date.get(current_date, (current_date, "", "", "", "", ""))[1],  # Keep season
+            readings_by_date.get(current_date, (current_date, "", "", "", "", ""))[2],  # Keep day name
+            readings_by_date.get(current_date, (current_date, "", "", "", "", ""))[3],  # Keep meditation
+            ot_reading,  # Keep OT readings
+            nt_reading + ("," + reading if nt_reading else reading)  # Append John reading
+        )
+
+        # Move to the next date
+        current_date += timedelta(days=1)
+
+    # Reconstruct lexicon in sorted order
+    adjusted_lexicon = [
+        (
+            date,
+            entry[1],
+            entry[2],
+            entry[3],
+            entry[4],
+            entry[5]
+        )
+        for date, entry in sorted(readings_by_date.items())
+    ]
+
+    return adjusted_lexicon
 
 def add_reverse_flags(seasons):
     reverse_mapping = {
@@ -547,6 +614,12 @@ def generate_lexicon_csv(year, readings_file, output_file):
 
     # Combine 'Carried Over Days' with existing days where there is no clash
     lexicon = combine_carried_over_readings(lexicon)
+
+    # Adjust First Ordinary Time and Lent readings
+    first_ordinary_time_end = [entry[0] for entry in lexicon if entry[1] == "First Ordinary Time"][-1]
+    lent_start = [entry[0] for entry in lexicon if entry[1] == "Lent"][0]
+
+    lexicon = append_unfinished_john_readings_to_lent(lexicon, first_ordinary_time_end, lent_start)
 
     # Write the lexicon to a CSV
     with open(output_file, mode="w", newline="") as file:

@@ -1,26 +1,26 @@
 Date,Season,Day Name,Meditation,OT Reading,NT Reading
-2023-12-03,Advent,1st Sunday,Psalm,,
-2023-12-04,Advent,Monday of Week 1,Psalm,,
-2023-12-05,Advent,Tuesday of Week 1,Psalm,,
-2023-12-06,Advent,Wednesday of Week 1,Psalm,,
-2023-12-07,Advent,Thursday of Week 1,Psalm,,
-2023-12-08,Advent,Friday of Week 1,Psalm,,
-2023-12-09,Advent,Saturday of Week 1,,Isaiah 11:1-10,Matthew 1:1-17
-2023-12-10,Advent,2nd Sunday,,Genesis 1:1-2:3,
-2023-12-11,Advent,Monday of Week 2,,Genesis 2:7-9; 15-25,
-2023-12-12,Advent,Tuesday of Week 2,,Genesis 3:1-24,
-2023-12-13,Advent,Wednesday of Week 2,,Genesis 6:5-22; 9:8-17,
-2023-12-14,Advent,Thursday of Week 2,,Genesis 12:1-7; 15:1-6,
-2023-12-15,Advent,Friday of Week 2,,Genesis 22:1-14,
-2023-12-16,Advent,Saturday of Week 2,,Genesis 28:10-22,
-2023-12-17,Advent,3rd Sunday,,Genesis 37:3-36; 50:15-21,
-2023-12-18,Advent,Monday of Week 3,,Exodus 3:1-12,
-2023-12-19,Advent,Tuesday of Week 3,,Exodus 12:1-28,
-2023-12-20,Advent,Wednesday of Week 3,,Exodus 20:1-21,
-2023-12-21,Advent,Thursday of Week 3,,Joshua 6:1-20,
-2023-12-22,Advent,Friday of Week 3,,Ruth 1:1-22; 4:13-17,
-2023-12-23,Advent,Saturday of Week 3,,1 Samuel 16:1-13,
-2023-12-24,Advent,4th Sunday,,2 Samuel 7:1-17,
+2023-12-03,Advent,1st Sunday,,Isaiah 11:1-10,Matthew 1:1-17
+2023-12-04,Advent,Monday of Week 1,,Genesis 1:1-2:3,
+2023-12-05,Advent,Tuesday of Week 1,,Genesis 2:7-9; 15-25,
+2023-12-06,Advent,Wednesday of Week 1,,Genesis 3:1-24,
+2023-12-07,Advent,Thursday of Week 1,,Genesis 6:5-22; 9:8-17,
+2023-12-08,Advent,Friday of Week 1,,Genesis 12:1-7; 15:1-6,
+2023-12-09,Advent,Saturday of Week 1,,Genesis 22:1-14,
+2023-12-10,Advent,2nd Sunday,,Genesis 28:10-22,
+2023-12-11,Advent,Monday of Week 2,,Genesis 37:3-36; 50:15-21,
+2023-12-12,Advent,Tuesday of Week 2,,Exodus 3:1-12,
+2023-12-13,Advent,Wednesday of Week 2,,Exodus 12:1-28,
+2023-12-14,Advent,Thursday of Week 2,,Exodus 20:1-21,
+2023-12-15,Advent,Friday of Week 2,,Joshua 6:1-20,
+2023-12-16,Advent,Saturday of Week 2,,Ruth 1:1-22; 4:13-17,
+2023-12-17,Advent,3rd Sunday,,1 Samuel 16:1-13,
+2023-12-18,Advent,Monday of Week 3,,2 Samuel 7:1-17,
+2023-12-19,Advent,Tuesday of Week 3,,1 Kings 18:17-39,
+2023-12-20,Advent,Wednesday of Week 3,,Jonah 1:1-17; 3:1-10,
+2023-12-21,Advent,Thursday of Week 3,,,Luke 1:1-25
+2023-12-22,Advent,Friday of Week 3,,,Luke 1:26-56
+2023-12-23,Advent,Saturday of Week 3,,,Luke 1:57-80
+2023-12-24,Advent,4th Sunday,,Micah 5:2-4,Matthew 1:18-23; Luke 2:1-5
 2023-12-25,Christmas,CHRISTMAS DAY,,Isaiah 9:2-7,Luke 2:1-21
 2023-12-26,Christmas,Boxing Day,,Psalm 98,
 2023-12-27,Christmas,Wednesday of Week 0,,Psalm 2,
@@ -72,8 +72,8 @@ Date,Season,Day Name,Meditation,OT Reading,NT Reading
 2024-02-11,First Ordinary Time,2nd Sunday,Psalm,,John 8
 2024-02-12,First Ordinary Time,Monday of Week 2,Psalm,,John 9
 2024-02-13,First Ordinary Time,Shrove Tuesday (Pancake Day),Psalm,,John 10
-2024-02-14,Lent,Ash Wednesday,Psalm,Genesis 1-4,
-2024-02-15,Lent,Thursday of Week 0,Psalm,Genesis 5-6:8,
+2024-02-14,Lent,Ash Wednesday,Psalm,Genesis 1-4,John 11
+2024-02-15,Lent,Thursday of Week 0,Psalm,Genesis 5-6:8,John 12:1-11
 2024-02-16,Lent,Friday of Week 0,Psalm,Genesis 6:9-11:26,
 2024-02-17,Lent,Saturday of Week 0,Psalm,,
 2024-02-18,Lent,1st Sunday,Psalm,Genesis 11:27-14,
@@ -270,52 +270,52 @@ Date,Season,Day Name,Meditation,OT Reading,NT Reading
 2024-08-27,Second Ordinary Time,Tuesday of Week 14,Psalm,2 Chronicles 25-27;2 Chronicles 28-31,
 2024-08-28,Second Ordinary Time,Wednesday of Week 14,Psalm,2 Chronicles 32-34;2 Chronicles 35-36,
 2024-08-29,Second Ordinary Time,Thursday of Week 14,Psalm,,
-2024-08-30,Second Ordinary Time,Friday of Week 14,Psalm,Romans 1-2;Romans 3-4,
-2024-08-31,Second Ordinary Time,Saturday of Week 14,Psalm,Romans 5-6;Romans 7-8,
-2024-09-01,Second Ordinary Time,15th Sunday,Psalm,Romans 9-10;Romans 11-12,
-2024-09-02,Second Ordinary Time,Monday of Week 15,Psalm,Romans 13-14;Romans 15-16,
+2024-08-30,Second Ordinary Time,Friday of Week 14,Psalm,,Romans 1-2;Romans 3-4
+2024-08-31,Second Ordinary Time,Saturday of Week 14,Psalm,,Romans 5-6;Romans 7-8
+2024-09-01,Second Ordinary Time,15th Sunday,Psalm,,Romans 9-10;Romans 11-12
+2024-09-02,Second Ordinary Time,Monday of Week 15,Psalm,,Romans 13-14;Romans 15-16
 2024-09-03,Second Ordinary Time,Tuesday of Week 15,Psalm,,
-2024-09-04,Second Ordinary Time,Wednesday of Week 15,Psalm,1 Corinthians 1-2;1 Corinthians 3-4,
-2024-09-05,Second Ordinary Time,Thursday of Week 15,Psalm,1 Corinthians 5-6;1 Corinthians 7-8,
-2024-09-06,Second Ordinary Time,Friday of Week 15,Psalm,1 Corinthians 9-10;1 Corinthians 11-12,
-2024-09-07,Second Ordinary Time,Saturday of Week 15,Psalm,1 Corinthians 13-14;1 Corinthians 15-16,
+2024-09-04,Second Ordinary Time,Wednesday of Week 15,Psalm,,1 Corinthians 1-2;1 Corinthians 3-4
+2024-09-05,Second Ordinary Time,Thursday of Week 15,Psalm,,1 Corinthians 5-6;1 Corinthians 7-8
+2024-09-06,Second Ordinary Time,Friday of Week 15,Psalm,,1 Corinthians 9-10;1 Corinthians 11-12
+2024-09-07,Second Ordinary Time,Saturday of Week 15,Psalm,,1 Corinthians 13-14;1 Corinthians 15-16
 2024-09-08,Second Ordinary Time,16th Sunday,Psalm,,
-2024-09-09,Second Ordinary Time,Monday of Week 16,Psalm,2 Corinthians 1-2;2 Corinthians 3-4,
-2024-09-10,Second Ordinary Time,Tuesday of Week 16,Psalm,2 Corinthians 5-6;2 Corinthians 7-8,
-2024-09-11,Second Ordinary Time,Wednesday of Week 16,Psalm,2 Corinthians 9-10;2 Corinthians 11-13,
+2024-09-09,Second Ordinary Time,Monday of Week 16,Psalm,,2 Corinthians 1-2;2 Corinthians 3-4
+2024-09-10,Second Ordinary Time,Tuesday of Week 16,Psalm,,2 Corinthians 5-6;2 Corinthians 7-8
+2024-09-11,Second Ordinary Time,Wednesday of Week 16,Psalm,,2 Corinthians 9-10;2 Corinthians 11-13
 2024-09-12,Second Ordinary Time,Thursday of Week 16,Psalm,,
-2024-09-13,Second Ordinary Time,Friday of Week 16,Psalm,Galatians 1-2;Galatians 3-4,
-2024-09-14,Second Ordinary Time,Saturday of Week 16,Psalm,Galatians 5-6,
+2024-09-13,Second Ordinary Time,Friday of Week 16,Psalm,,Galatians 1-2;Galatians 3-4
+2024-09-14,Second Ordinary Time,Saturday of Week 16,Psalm,,Galatians 5-6
 2024-09-15,Second Ordinary Time,17th Sunday,Psalm,,
-2024-09-16,Second Ordinary Time,Monday of Week 17,Psalm,Ephesians 1-2;Ephesians 3-4,
-2024-09-17,Second Ordinary Time,Tuesday of Week 17,Psalm,Ephesians 5-6,
+2024-09-16,Second Ordinary Time,Monday of Week 17,Psalm,,Ephesians 1-2;Ephesians 3-4
+2024-09-17,Second Ordinary Time,Tuesday of Week 17,Psalm,,Ephesians 5-6
 2024-09-18,Second Ordinary Time,Wednesday of Week 17,Psalm,,
-2024-09-19,Second Ordinary Time,Thursday of Week 17,Psalm,Philippians 1-2;Philippians 3-4,
-2024-09-20,Second Ordinary Time,Friday of Week 17,Psalm,Colossians 1-2;Colossians 3-4,
-2024-09-21,Second Ordinary Time,Saturday of Week 17,Psalm,1 Thessalonians 1-2;1 Thessalonians 3-4,
-2024-09-22,Second Ordinary Time,18th Sunday,Psalm,1 Thessalonians 5,
-2024-09-23,Second Ordinary Time,Monday of Week 18,Psalm,2 Thessalonians 1-3,
-2024-09-24,Second Ordinary Time,Tuesday of Week 18,Psalm,1 Timothy 1-3;1 Timothy 4-6,
-2024-09-25,Second Ordinary Time,Wednesday of Week 18,Psalm,2 Timothy 1-4,
-2024-09-26,Second Ordinary Time,Thursday of Week 18,Psalm,Titus 1-3,
-2024-09-27,Second Ordinary Time,Friday of Week 18,Psalm,Philemon 1,
+2024-09-19,Second Ordinary Time,Thursday of Week 17,Psalm,,Philippians 1-2;Philippians 3-4
+2024-09-20,Second Ordinary Time,Friday of Week 17,Psalm,,Colossians 1-2;Colossians 3-4
+2024-09-21,Second Ordinary Time,Saturday of Week 17,Psalm,,1 Thessalonians 1-2;1 Thessalonians 3-4
+2024-09-22,Second Ordinary Time,18th Sunday,Psalm,,1 Thessalonians 5
+2024-09-23,Second Ordinary Time,Monday of Week 18,Psalm,,2 Thessalonians 1-3
+2024-09-24,Second Ordinary Time,Tuesday of Week 18,Psalm,,1 Timothy 1-3;1 Timothy 4-6
+2024-09-25,Second Ordinary Time,Wednesday of Week 18,Psalm,,2 Timothy 1-4
+2024-09-26,Second Ordinary Time,Thursday of Week 18,Psalm,,Titus 1-3
+2024-09-27,Second Ordinary Time,Friday of Week 18,Psalm,,Philemon 1
 2024-09-28,Second Ordinary Time,Saturday of Week 18,Psalm,,
-2024-09-29,Second Ordinary Time,19th Sunday,Psalm,Hebrews 1-2;Hebrews 3-4,
-2024-09-30,Second Ordinary Time,Monday of Week 19,Psalm,Hebrews 5-6;Hebrews 7-8,
-2024-10-01,Second Ordinary Time,Tuesday of Week 19,Psalm,Hebrews 9-10;Hebrews 11-13,
+2024-09-29,Second Ordinary Time,19th Sunday,Psalm,,Hebrews 1-2;Hebrews 3-4
+2024-09-30,Second Ordinary Time,Monday of Week 19,Psalm,,Hebrews 5-6;Hebrews 7-8
+2024-10-01,Second Ordinary Time,Tuesday of Week 19,Psalm,,Hebrews 9-10;Hebrews 11-13
 2024-10-02,Second Ordinary Time,Wednesday of Week 19,Psalm,,
-2024-10-03,Second Ordinary Time,Thursday of Week 19,Psalm,James 1-3;James 4-5,
-2024-10-04,Second Ordinary Time,Friday of Week 19,Psalm,1 Peter 1-2;1 Peter 3-5,
-2024-10-05,Second Ordinary Time,Saturday of Week 19,Psalm,2 Peter 1-3,
+2024-10-03,Second Ordinary Time,Thursday of Week 19,Psalm,,James 1-3;James 4-5
+2024-10-04,Second Ordinary Time,Friday of Week 19,Psalm,,1 Peter 1-2;1 Peter 3-5
+2024-10-05,Second Ordinary Time,Saturday of Week 19,Psalm,,2 Peter 1-3
 2024-10-06,Second Ordinary Time,Harvest,,Psalm 65,
-2024-10-07,Second Ordinary Time,Monday of Week 20,Psalm,2 & 3 John 1,
-2024-10-08,Second Ordinary Time,Tuesday of Week 20,Psalm,Jude 1,
+2024-10-07,Second Ordinary Time,Monday of Week 20,Psalm,,2 & 3 John 1
+2024-10-08,Second Ordinary Time,Tuesday of Week 20,Psalm,,Jude 1
 2024-10-09,Second Ordinary Time,Wednesday of Week 20,Psalm,,
-2024-10-10,Second Ordinary Time,Thursday of Week 20,Psalm,Revelation 1-3;Revelation 4-6,
-2024-10-11,Second Ordinary Time,Friday of Week 20,Psalm,Revelation 7-9;Revelation 10-11,
-2024-10-12,Second Ordinary Time,Saturday of Week 20,Psalm,Revelation 12-13;Revelation 14-16,
-2024-10-13,Second Ordinary Time,21st Sunday,Psalm,Revelation 17-18;Revelation 19-20,
-2024-10-14,Second Ordinary Time,Monday of Week 21,Psalm,Revelation 21-22,
+2024-10-10,Second Ordinary Time,Thursday of Week 20,Psalm,,Revelation 1-3;Revelation 4-6
+2024-10-11,Second Ordinary Time,Friday of Week 20,Psalm,,Revelation 7-9;Revelation 10-11
+2024-10-12,Second Ordinary Time,Saturday of Week 20,Psalm,,Revelation 12-13;Revelation 14-16
+2024-10-13,Second Ordinary Time,21st Sunday,Psalm,,Revelation 17-18;Revelation 19-20
+2024-10-14,Second Ordinary Time,Monday of Week 21,Psalm,,Revelation 21-22
 2024-10-15,Second Ordinary Time,Tuesday of Week 21,Psalm,,
 2024-10-16,Second Ordinary Time,Wednesday of Week 21,Psalm,,
 2024-10-17,Second Ordinary Time,Thursday of Week 21,Psalm,,
@@ -332,10 +332,10 @@ Date,Season,Day Name,Meditation,OT Reading,NT Reading
 2024-10-28,Second Ordinary Time,Monday of Week 23,Psalm,,
 2024-10-29,Second Ordinary Time,Tuesday of Week 23,Psalm,Ecclesiastes 1-4;Ecclesiastes 5-8,
 2024-10-30,Second Ordinary Time,Wednesday of Week 23,Psalm,Ecclesiastes 9-12,
-2024-10-31,Second Ordinary Time,Thursday of Week 23,,,
-2024-11-01,Second Ordinary Time,ALL SAINTS' DAY,,,
+2024-10-31,Second Ordinary Time,Thursday of Week 23,,Psalm 24; Isaiah 25:1-10,
+2024-11-01,Second Ordinary Time,ALL SAINTS' DAY,,,Matthew 5:3-12; Revelation 7
 2024-11-02,Second Ordinary Time,Saturday of Week 23,,,
-2024-11-03,Second Ordinary Time,24th Sunday,Psalm,Song of Songs 1-4;Song of Songs 5-8,
+2024-11-03,Second Ordinary Time,24th Sunday,Psalm,,
 2024-11-04,Second Ordinary Time,Monday of Week 24,Psalm,,
 2024-11-05,Second Ordinary Time,Tuesday of Week 24,Psalm,,
 2024-11-06,Second Ordinary Time,Wednesday of Week 24,Psalm,,
@@ -356,7 +356,7 @@ Date,Season,Day Name,Meditation,OT Reading,NT Reading
 2024-11-21,Second Ordinary Time,Thursday of Week 26,Psalm,,
 2024-11-22,Second Ordinary Time,Friday of Week 26,Psalm,,
 2024-11-23,Second Ordinary Time,Saturday of Week 26,Psalm,,
-2024-11-24,Second Ordinary Time,Christ the King,Psalm,,
+2024-11-24,Second Ordinary Time,Christ the King,,Daniel 7:1-14; Psalm 93,John 18:28-37; Colossians 1:13-20; Philippians 2:5-11; Revelation 1:4-8
 2024-11-25,Second Ordinary Time,Monday of Week 27,Psalm,,
 2024-11-26,Second Ordinary Time,Tuesday of Week 27,Psalm,,
 2024-11-27,Second Ordinary Time,Wednesday of Week 27,Psalm,,
