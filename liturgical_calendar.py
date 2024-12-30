@@ -349,16 +349,35 @@ def adjust_annunciation_readings(lexicon, annunciation_date):
             readings_by_date.get(days[4], (None, None, None, None, "", None))[5],
         )
 
-    # Clear readings for Annunciation and adjacent days
+    # Clear meditations for Annunciation and adjacent days, and update specific readings
     for day in [days[1], annunciation_date, days[3]]:
         readings_by_date[day] = (
             day,
             readings_by_date.get(day, (None, None, None, None, "", None))[1],
             readings_by_date.get(day, (None, None, None, None, "", None))[2],
-            readings_by_date.get(day, (None, None, None, None, "", None))[3],
-            "",
+            "",  # Clear meditation
+            "",  # Clear OT reading
             readings_by_date.get(day, (None, None, None, None, "", None))[5],
         )
+
+    # Add specific OT and NT readings
+    readings_by_date[annunciation_date] = (
+        annunciation_date,
+        readings_by_date.get(annunciation_date, (None, None, None, None, "", None))[1],
+        readings_by_date.get(annunciation_date, (None, None, None, None, "", None))[2],
+        "",  # Clear meditation
+        readings_by_date.get(annunciation_date, (None, None, None, None, "", None))[4],
+        "Luke 1:26-38",  # Add NT reading for Annunciation
+    )
+
+    readings_by_date[days[1]] = (
+        days[1],
+        readings_by_date.get(days[1], (None, None, None, None, "", None))[1],
+        readings_by_date.get(days[1], (None, None, None, None, "", None))[2],
+        "",  # Clear meditation
+        "Isaiah 7:10-14",  # Add OT reading for the day before
+        readings_by_date.get(days[1], (None, None, None, None, "", None))[5],
+    )
 
     # Reconstruct lexicon
     for date, entry in sorted(readings_by_date.items()):
@@ -545,6 +564,27 @@ def main(year):
 if __name__ == "__main__":
     main(year)
 
-
 # John readings should keep going in lent if fot is too short
-# harvest, all saints, christ the king
+# for annunciation, harvest, all saints, and christ the king, remove meditations, part readings aside, and add readings
+
+"""
+can you modify the script slightly to do the following:
+
+for annunciation, ensure there are no values in the 'Meditations' column for annunciation, the day before, and the day after
+
+also, add the following readings:
+- on annuciation, for all NT columns, add luke 1:26-38 as a main reading
+- for the day before annunciation, add as an ot reading: Isaiah 7:10-14
+
+then, for harvest, please push all readings down by one row in order to insert Psalm 65. remove the meditation for harvest
+
+for all saints, please do the same grouping thing you've done for annunciation so that the readings around it are grouped backwards and forwards to 2 days before and after if applicable
+
+remove all meditations on all saints, the day before, and the day after
+
+then, for the day before old saints, in the ot readings section add: "Psalm 24; Isaiah 25:1-10", and then, in the nt section, add: "Matthew 5:3-12; Revelation 7"
+
+for christ the king, add these two ot readings: "Daniel 7:1-14;Psalm 93". And for the nt reading: "John 18:28-37; Colossians 1:13-20; Philippians 2:5-11; Revelation 1:4-8" 
+
+please process harvest before processing all saints and christ the king, else the all saints and christ the kings stuff might be messed up
+"""
