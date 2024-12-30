@@ -534,6 +534,17 @@ def generate_lexicon_csv(year, readings_file, output_file):
     annunciation_date = celebratory_days[0]["ANNUNCIATION"]
     lexicon = adjust_annunciation_readings(lexicon, annunciation_date)
 
+    # Adjust Harvest readings
+    harvest_date = celebratory_days[4]["Harvest"]
+    lexicon = adjust_harvest_readings(lexicon, harvest_date)
+
+    # Adjust All Saints readings
+    all_saints_date = celebratory_days[0]["ALL SAINTS' DAY"]
+    lexicon = adjust_all_saints_readings(lexicon, all_saints_date)
+
+    christ_the_king_date = celebratory_days[2]["Christ the King"]
+    lexicon = add_christ_the_king_readings(lexicon, christ_the_king_date)
+
     # Combine 'Carried Over Days' with existing days where there is no clash
     lexicon = combine_carried_over_readings(lexicon)
 
@@ -545,6 +556,233 @@ def generate_lexicon_csv(year, readings_file, output_file):
             writer.writerow(entry)
 
     print(f"Lexicon CSV saved as {output_file}")
+
+def add_christ_the_king_readings(lexicon, christ_the_king_date):
+    """Add specific readings for Christ the King in the OT and NT columns."""
+    adjusted_lexicon = []
+    readings_by_date = {entry[0]: entry for entry in lexicon}
+
+    # Add the specified readings for Christ the King
+    readings_by_date[christ_the_king_date] = (
+        christ_the_king_date,
+        readings_by_date.get(christ_the_king_date, (christ_the_king_date, "", "", "", "", ""))[1],  # Keep season
+        readings_by_date.get(christ_the_king_date, (christ_the_king_date, "", "", "", "", ""))[2],  # Keep day name
+        "",
+        "Daniel 7:1-14; Psalm 93",  # Add OT readings
+        "John 18:28-37; Colossians 1:13-20; Philippians 2:5-11; Revelation 1:4-8",  # Add NT readings
+    )
+
+    # Reconstruct the lexicon in sorted order
+    for date, entry in sorted(readings_by_date.items()):
+        adjusted_lexicon.append(entry)
+
+    return adjusted_lexicon
+
+def adjust_all_saints_readings(lexicon, all_saints_date):
+    """
+    Adjust readings around All Saints Day:
+    - Add specific readings for All Saints Day and the day before.
+    - Move all Revelation readings to start 2 days after All Saints if they initially appear on All Saints.
+    - Group NT readings around All Saints.
+    """
+    adjusted_lexicon = []
+    readings_by_date = {entry[0]: entry for entry in lexicon}
+
+    print("\nInitial readings by date:")
+    for date, entry in sorted(readings_by_date.items()):
+        print(f"{date}: {entry}")
+
+
+    # Step 2: Move all Revelation readings to start 2 days after All Saints if they are on All Saints
+    nt_readings = readings_by_date.get(all_saints_date, (None, None, None, None, "", ""))[5]
+    print(f"\nNT readings on All Saints Day ({all_saints_date}): {nt_readings}")
+
+    if "Revelation" in nt_readings:
+        print("Revelation readings found. Moving all Revelation readings to start 2 days after All Saints.")
+
+        # Collect all dates and NT readings that include Revelation
+        revelation_dates = [
+            date for date, entry in readings_by_date.items()
+            if "Revelation" in entry[5]
+        ]
+        print(f"Dates with Revelation readings: {revelation_dates}")
+
+        # Collect all Revelation readings in order
+        all_revelation_readings = []
+        for date in revelation_dates:
+            readings = readings_by_date[date][5]
+            if "Revelation" in readings:
+                all_revelation_readings.extend(readings.split(","))
+
+        print(f"All Revelation readings to move: {all_revelation_readings}")
+
+        # Determine the starting date for Revelation readings (2 days after All Saints)
+        start_date = all_saints_date + timedelta(days=2)
+        print(f"Revelation readings will start on: {start_date}")
+
+        # Clear existing Revelation readings
+        for date in revelation_dates:
+            readings_by_date[date] = (
+                readings_by_date[date][0],
+                readings_by_date[date][1],
+                readings_by_date[date][2],
+                readings_by_date[date][3],
+                readings_by_date[date][4],
+                ""  # Clear NT readings
+            )
+
+        # Assign Revelation readings starting from the new date
+        current_date = start_date
+        for reading in all_revelation_readings:
+            readings_by_date[current_date] = (
+                readings_by_date.get(current_date, (current_date, None, None, None, "", ""))[0],
+                readings_by_date.get(current_date, (current_date, None, None, None, "", ""))[1],
+                readings_by_date.get(current_date, (current_date, None, None, None, "", ""))[2],
+                readings_by_date.get(current_date, (current_date, None, None, None, "", ""))[3],
+                readings_by_date.get(current_date, (current_date, None, None, None, "", ""))[4],
+                readings_by_date.get(current_date, (current_date, None, None, None, "", ""))[5] + ("," + reading).strip(",")
+            )
+            current_date += timedelta(days=1)
+
+    else:
+        print("No Revelation readings on All Saints Day.")
+
+    # Step 3: Group NT readings around All Saints
+    days = [
+        all_saints_date - timedelta(days=2),
+        all_saints_date - timedelta(days=1),
+        all_saints_date,
+        all_saints_date + timedelta(days=1),
+        all_saints_date + timedelta(days=2),
+    ]
+
+    # Collect NT readings for the relevant days
+    nt_readings_group = {day: readings_by_date.get(day, (None, None, None, None, "", ""))[5] for day in days}
+    print("\nCollected NT readings for relevant days:")
+    for day, reading in nt_readings_group.items():
+        print(f"{day}: {reading}")
+
+    # Handle the case where All Saints has no NT readings
+    if not nt_readings_group[all_saints_date]:
+        nt_readings_group[all_saints_date] = ""
+
+    # Split All Saints readings if present
+    if nt_readings_group[all_saints_date]:
+        chapters = nt_readings_group[all_saints_date].split(",")
+        mid = len(chapters) // 2
+        above_split = ",".join(chapters[:mid])
+        below_split = ",".join(chapters[mid:])
+    else:
+        above_split = below_split = ""
+
+    # Combine NT readings
+    combined_readings_before = nt_readings_group[days[0]]
+    if nt_readings_group[days[1]]:
+        combined_readings_before = (combined_readings_before + "," + nt_readings_group[days[1]]).strip(",")
+    combined_readings_before = (combined_readings_before + "," + above_split).strip(",")
+
+    combined_readings_after = below_split
+    if nt_readings_group[days[3]]:
+        combined_readings_after = (combined_readings_after + "," + nt_readings_group[days[3]]).strip(",")
+    combined_readings_after = (combined_readings_after + "," + nt_readings_group[days[4]]).strip(",")
+
+    print("\nGrouped NT readings:")
+    print(f"Before: {combined_readings_before}")
+    print(f"After: {combined_readings_after}")
+
+    # Update NT readings in the lexicon
+    if combined_readings_before:
+        readings_by_date[days[0]] = (
+            readings_by_date[days[0]][0],
+            readings_by_date[days[0]][1],
+            readings_by_date[days[0]][2],
+            readings_by_date[days[0]][3],
+            readings_by_date[days[0]][4],
+            combined_readings_before
+        )
+
+    if combined_readings_after:
+        readings_by_date[days[4]] = (
+            readings_by_date[days[4]][0],
+            readings_by_date[days[4]][1],
+            readings_by_date[days[4]][2],
+            readings_by_date[days[4]][3],
+            readings_by_date[days[4]][4],
+            combined_readings_after
+        )
+
+    # Clear meditations for All Saints and adjacent days
+    for day in [days[1], all_saints_date, days[3]]:
+        readings_by_date[day] = (
+            readings_by_date[day][0],
+            readings_by_date[day][1],
+            readings_by_date[day][2],
+            "",  # Clear meditation
+            readings_by_date[day][4],
+            ""  # Clear NT readings
+        )
+
+    # Step 1: Add specific readings for All Saints Day and the day before
+    day_before_all_saints = all_saints_date - timedelta(days=1)
+
+    readings_by_date[day_before_all_saints] = (
+        day_before_all_saints,
+        readings_by_date.get(day_before_all_saints, (None, "", "", "", "", ""))[1],
+        readings_by_date.get(day_before_all_saints, (None, "", "", "", "", ""))[2],
+        "",  # Clear meditation
+        "Psalm 24; Isaiah 25:1-10",  # OT readings
+        ""
+    )
+
+    readings_by_date[all_saints_date] = (
+        all_saints_date,
+        readings_by_date.get(all_saints_date, (None, "", "", "", "", ""))[1],
+        readings_by_date.get(all_saints_date, (None, "", "", "", "", ""))[2],
+        "",  # Clear meditation
+        "",  # No OT readings
+        "Matthew 5:3-12; Revelation 7"  # NT readings
+    )
+
+    print("\nFinal readings by date:")
+    for date, entry in sorted(readings_by_date.items()):
+        print(f"{date}: {entry}")
+
+    # Reconstruct lexicon
+    for date, entry in sorted(readings_by_date.items()):
+        adjusted_lexicon.append(entry)
+
+    return adjusted_lexicon
+
+def adjust_harvest_readings(lexicon, harvest_date):
+    """Push all NT readings down by one row to insert Psalm 65 on Harvest."""
+    adjusted_lexicon = []
+    readings_by_date = {entry[0]: entry for entry in lexicon}
+
+    # Check if Harvest day already has NT readings
+    existing_nt_readings = readings_by_date.get(harvest_date, (None, None, None, None, "", ""))[5]
+
+    # Only proceed with shifting if there are existing NT readings
+    if existing_nt_readings:
+        for date in sorted(readings_by_date.keys(), reverse=True):
+            if date > harvest_date:  # Shift only dates after Harvest
+                next_date = date + timedelta(days=1)
+                readings_by_date[next_date] = readings_by_date[date]
+
+    # Insert Psalm 65 on Harvest day in the OT column
+    readings_by_date[harvest_date] = (
+        harvest_date,
+        readings_by_date.get(harvest_date, (harvest_date, "", "", "", "", ""))[1],  # Keep season
+        readings_by_date.get(harvest_date, (harvest_date, "", "", "", "", ""))[2],  # Keep day name
+        "",  # Clear meditation
+        "Psalm 65",  # Add Psalm 65 to the OT column
+        "",  # Clear NT reading
+    )
+
+    # Reconstruct the lexicon in sorted order
+    for date, entry in sorted(readings_by_date.items()):
+        adjusted_lexicon.append(entry)
+
+    return adjusted_lexicon
 
 def ordinal(n):
     """Convert an integer into its ordinal representation."""
@@ -582,7 +820,7 @@ for all saints, please do the same grouping thing you've done for annunciation s
 
 remove all meditations on all saints, the day before, and the day after
 
-then, for the day before old saints, in the ot readings section add: "Psalm 24; Isaiah 25:1-10", and then, in the nt section, add: "Matthew 5:3-12; Revelation 7"
+then, for the day before all saints, in the ot readings section add: "Psalm 24; Isaiah 25:1-10", and then, in the nt section, add: "Matthew 5:3-12; Revelation 7"
 
 for christ the king, add these two ot readings: "Daniel 7:1-14;Psalm 93". And for the nt reading: "John 18:28-37; Colossians 1:13-20; Philippians 2:5-11; Revelation 1:4-8" 
 
