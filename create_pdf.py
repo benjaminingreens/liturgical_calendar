@@ -2,7 +2,10 @@ import pandas as pd
 from reportlab.lib import colors
 from reportlab.lib.pagesizes import landscape, A4
 from reportlab.platypus import Table, TableStyle, SimpleDocTemplate, PageBreak
-from textwrap import wrap
+from textwrap import wrap as space_wrap
+from reportlab.lib.styles import ParagraphStyle
+from reportlab.platypus import Paragraph
+from reportlab.lib.units import inch
 
 # Read the CSV into a DataFrame
 csv_file = "liturgical_calendar_lexicon_2025.csv"  # Replace with the path to your CSV file
@@ -24,112 +27,144 @@ muted_grey_days = [
     "Holy Wednesday", "Holy Saturday", "Harvest"
 ]
 
-# Function to wrap text to fit column width
+def get_row_height(row, col_widths, font_size=10, leading=12):
+    """
+    Calculate the height of a row based on the wrapped content in each cell.
+    """
+    style = ParagraphStyle("default", fontName="Helvetica", fontSize=font_size, leading=leading)
+    max_lines = 0
+    for cell, col_width in zip(row, col_widths):
+        para = Paragraph(wrap_text(cell, col_width), style)
+        _, height = para.wrap(col_width, inch)
+        max_lines = max(max_lines, height / leading)
+    return max_lines * leading
+
 def wrap_text(text, max_width):
-    return "\n".join(wrap(str(text), max_width))
+    text = str(text).strip()
+    if len(text) <= max_width // 6:  # Approximate width in characters
+        return text
+    parts = text.split(';')
+    wrapped_by_semicolons = [
+        part.strip() + (';' if i < len(parts) - 1 else '') for i, part in enumerate(parts)
+    ]
+    fully_wrapped = []
+    for line in wrapped_by_semicolons:
+        if len(line) > max_width // 6:
+            fully_wrapped.extend(space_wrap(line, width=max_width // 6))
+        else:
+            fully_wrapped.append(line)
+    return "\n".join(fully_wrapped)
 
-# Calculate column widths dynamically for each page
-def calculate_column_widths(page_data, max_page_width=750, min_table_width=700):
-    col_widths = [max(len(str(cell)) for cell in col) * 6 for col in zip(*page_data)]
+def calculate_column_widths(data, max_page_width=750, min_table_width=700):
+    buffer = 10
+    header = data[0]
+    header_widths = [len(str(cell)) * 6 + buffer for cell in header]
+
+    col_widths = [
+        max(max(len(str(cell)) for cell in col) * 6 + buffer, header_width)
+        for col, header_width in zip(zip(*data), header_widths)
+    ]
+
     total_width = sum(col_widths)
-
-    # Ensure a minimum table width
     if total_width < min_table_width:
         scale_factor = min_table_width / total_width
         col_widths = [int(width * scale_factor) for width in col_widths]
+    elif total_width > max_page_width:
+        ot_index = header.index("OT Reading")
+        nt_index = header.index("NT Reading")
+        excess_width = total_width - max_page_width
+        ot_width = col_widths[ot_index]
+        nt_width = col_widths[nt_index]
+        total_reducible = ot_width + nt_width
+        if total_reducible > 0:
+            reduction_factor = excess_width / total_reducible
+            col_widths[ot_index] -= int(ot_width * reduction_factor)
+            col_widths[nt_index] -= int(nt_width * reduction_factor)
+        min_col_width = max(header_widths)
+        col_widths[ot_index] = max(col_widths[ot_index], min_col_width)
+        col_widths[nt_index] = max(col_widths[nt_index], min_col_width)
 
-    # Adjust "NT Reading" and "OT Reading" to wrap if total width exceeds page width
-    if total_width > max_page_width:
-        nt_index = page_data[0].index("NT Reading")
-        ot_index = page_data[0].index("OT Reading")
-        for row in page_data[1:]:
-            row[nt_index] = wrap_text(row[nt_index], 30)
-            row[ot_index] = wrap_text(row[ot_index], 30)
-
-        # Recalculate column widths after wrapping
-        col_widths = [max(len(str(cell)) for cell in col) * 6 for col in zip(*page_data)]
+    # Ensure no column is smaller than its header text
+    col_widths = [
+        max(width, header_width) for width, header_width in zip(col_widths, header_widths)
+    ]
 
     return col_widths
 
-# Function to split data into pages with header on each page and ensure full pages
-def split_data(data, max_page_height, max_page_width):
+def split_data(data, col_widths, max_page_height=550, font_size=10, leading=12):
+    """
+    Split data into pages based on dynamic row heights, ensuring every page starts with a header.
+    """
+    header_row = data[0]
     pages = []
-    current_page = [data[0]]  # Start with header row
-    current_height = 30  # Initial height for header row
-    row_height = 20  # Estimate row height
+    current_page = [header_row]
+    current_height = get_row_height(header_row, col_widths, font_size, leading)  # Header row height
 
     for row in data[1:]:
-        if current_height + row_height <= max_page_height:
-            current_page.append(row)
-            current_height += row_height
-        else:
-            # Calculate column widths for current page and add to pages
-            col_widths = calculate_column_widths(current_page, max_page_width)
-            pages.append((current_page, col_widths))
-            current_page = [data[0], row]  # Start new page with header
-            current_height = 30 + row_height
+        row_height = get_row_height(row, col_widths, font_size, leading)
+        
+        # Check if adding the row would exceed the page height
+        if current_height + row_height > max_page_height:
+            pages.append(current_page)  # Save the current page
+            current_page = [header_row]  # Start a new page with the header
+            current_height = get_row_height(header_row, col_widths, font_size, leading)
 
-    if len(current_page) > 1:
-        col_widths = calculate_column_widths(current_page, max_page_width)
-        pages.append((current_page, col_widths))
+        # Add the row to the current page
+        current_page.append(row)
+        current_height += row_height
+
+    if len(current_page) > 1:  # Add the last page if it has any rows
+        pages.append(current_page)
 
     return pages
 
-# Convert DataFrame to list of lists for the Table
 data = [df.columns.tolist()] + df.values.tolist()
-
-# Adjust the "Day Name" column dynamically
-day_name_index = data[0].index("Day Name")
-for row in data[1:]:
-    row[day_name_index] = wrap_text(row[day_name_index], 50)
-
-# Split data into pages
 max_page_height = 550
-max_page_width = 750
-pages = split_data(data, max_page_height, max_page_width)
+max_page_width = 700
 
-# Create the PDF
+# Calculate column widths before splitting data
+col_widths = calculate_column_widths(data, max_page_width)
+
+# Split data into pages using the calculated column widths
+pages = split_data(data, col_widths, max_page_height)
+
+# Generate the PDF with the split pages
 output_pdf = "readings.pdf"
 pdf = SimpleDocTemplate(output_pdf, pagesize=landscape(A4))
-
-# Create tables for each page
 elements = []
 
-for page_data, col_widths in pages:
-    table = Table(page_data, colWidths=col_widths)  # Adjust column widths dynamically for the page
-
-    # Style table
+for page_data in pages:
+    col_widths = calculate_column_widths(page_data, max_page_width)
+    nt_index = page_data[0].index("NT Reading")
+    ot_index = page_data[0].index("OT Reading")
+    for row in page_data[1:]:
+        row[nt_index] = wrap_text(row[nt_index], col_widths[nt_index])
+        row[ot_index] = wrap_text(row[ot_index], col_widths[ot_index])
+    table = Table(page_data, colWidths=col_widths)
     style = TableStyle([
-        ("BACKGROUND", (0, 0), (-1, 0), colors.HexColor("#dfe7ee")),  # Header background
-        ("TEXTCOLOR", (0, 0), (-1, 0), colors.HexColor("#333333")),  # Header text color
-        ("ALIGN", (0, 0), (-1, 0), "CENTER"),                       # Center align all cells
-        ("FONTNAME", (0, 0), (-1, 0), "Helvetica-Bold"),            # Bold font for headers
-        ("FONTSIZE", (0, 0), (-1, -1), 10),                         # Font size for all text
-        ("BACKGROUND", (0, 1), (-1, -1), colors.HexColor("#f7f9fc")),  # Row background
-        ("GRID", (0, 0), (-1, -1), 0.5, colors.HexColor("#cccccc")),  # Grid lines
-        ("ROWBACKGROUNDS", (0, 1), (-1, -1), [colors.white, colors.HexColor("#f1f4f9")]),  # Alternate row colors
+        ("BACKGROUND", (0, 0), (-1, 0), colors.HexColor("#dfe7ee")),
+        ("TEXTCOLOR", (0, 0), (-1, 0), colors.HexColor("#333333")),
+        ("ALIGN", (0, 0), (-1, 0), "CENTER"),
+        ("VALIGN", (0, 0), (-1, -1), "MIDDLE"),  # Vertically center all text
+        ("FONTNAME", (0, 0), (-1, 0), "Helvetica-Bold"),
+        ("FONTSIZE", (0, 0), (-1, -1), 10),
+        ("BACKGROUND", (0, 1), (-1, -1), colors.HexColor("#f7f9fc")),
+        ("GRID", (0, 0), (-1, -1), 0.5, colors.HexColor("#cccccc")),
+        ("ROWBACKGROUNDS", (0, 1), (-1, -1), [colors.white, colors.HexColor("#f1f4f9")]),
     ])
-
-    # Highlight rows based on "Day Name"
-    for i, row in enumerate(page_data[1:], start=1):  # Skip header row
-        day_name = row[page_data[0].index("Day Name")]
+    day_name_index = page_data[0].index("Day Name")
+    for i, row in enumerate(page_data[1:], start=1):
+        day_name = row[day_name_index]
         if any(day in day_name for day in muted_red_days):
             style.add("BACKGROUND", (0, i), (-1, i), colors.HexColor("#f8d7da"))
         elif any(day in day_name for day in muted_blue_days):
             style.add("BACKGROUND", (0, i), (-1, i), colors.HexColor("#d1ecf1"))
         elif any(day in day_name for day in muted_grey_days):
             style.add("BACKGROUND", (0, i), (-1, i), colors.HexColor("#e2e3e5"))
-
     table.setStyle(style)
     elements.append(table)
     elements.append(PageBreak())
-
-# Remove the last PageBreak
 if elements:
     elements.pop()
-
-# Build the PDF
 pdf.build(elements)
-
 print(f"PDF generated: {output_pdf}")
-
