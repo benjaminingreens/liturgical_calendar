@@ -27,6 +27,32 @@ muted_grey_days = [
     "Holy Wednesday", "Holy Saturday", "Harvest"
 ]
 
+def split_data_by_season(data):
+    """
+    Split data into pages based on changes in the 'Season' column.
+    """
+    header_row = data[0]
+    season_index = header_row.index("Season")
+    pages = []
+    current_page = [header_row]
+    current_season = None
+
+    for row in data[1:]:
+        row_season = row[season_index]
+        if row_season != current_season:
+            # Start a new page if the season changes
+            if len(current_page) > 1:  # Avoid adding empty pages
+                pages.append(current_page)
+            current_page = [header_row]
+            current_season = row_season
+
+        current_page.append(row)
+
+    if len(current_page) > 1:  # Add the last page if it has any rows
+        pages.append(current_page)
+
+    return pages
+
 def get_row_height(row, col_widths, font_size=10, leading=12):
     """
     Calculate the height of a row based on the wrapped content in each cell.
@@ -126,13 +152,13 @@ max_page_width = 700
 col_widths = calculate_column_widths(data, max_page_width)
 
 # Split data into pages using the calculated column widths
-pages = split_data(data, col_widths, max_page_height)
+# pages = split_data(data, col_widths, max_page_height)
+pages = split_data_by_season(data)
 
 # Generate the PDF with the split pages
 output_pdf = "readings.pdf"
 pdf = SimpleDocTemplate(output_pdf, pagesize=landscape(A4))
 elements = []
-
 for page_data in pages:
     col_widths = calculate_column_widths(page_data, max_page_width)
     nt_index = page_data[0].index("NT Reading")
@@ -140,7 +166,7 @@ for page_data in pages:
     for row in page_data[1:]:
         row[nt_index] = wrap_text(row[nt_index], col_widths[nt_index])
         row[ot_index] = wrap_text(row[ot_index], col_widths[ot_index])
-    table = Table(page_data, colWidths=col_widths)
+    table = Table(page_data, colWidths=col_widths, repeatRows=1)  # Repeat header row
     style = TableStyle([
         ("BACKGROUND", (0, 0), (-1, 0), colors.HexColor("#dfe7ee")),
         ("TEXTCOLOR", (0, 0), (-1, 0), colors.HexColor("#333333")),
@@ -164,7 +190,10 @@ for page_data in pages:
     table.setStyle(style)
     elements.append(table)
     elements.append(PageBreak())
+
 if elements:
-    elements.pop()
+    elements.pop()  # Remove the last PageBreak
+
 pdf.build(elements)
 print(f"PDF generated: {output_pdf}")
+
