@@ -249,6 +249,241 @@ if True:
 
 import csv
 
+def add_song_of_songs_readings(lexicon, christ_the_king_date):
+    """
+    Replace all meditations with Song of Songs readings for the last six days
+    of the liturgical year after Christ the King.
+    """
+    # Define Song of Songs readings
+    song_of_songs_readings = [
+        "Song of Songs 1",
+        "Song of Songs 2",
+        "Song of Songs 3-4",
+        "Song of Songs 5",
+        "Song of Songs 6",
+        "Song of Songs 7-8"
+    ]
+
+    # Get the date range for the last six days of the liturgical year
+    last_six_days_start = christ_the_king_date + timedelta(days=1)
+
+    # Modify lexicon with Song of Songs readings
+    adjusted_lexicon = []
+    readings_by_date = {entry[0]: entry for entry in lexicon}
+    for i, reading in enumerate(song_of_songs_readings):
+        current_date = last_six_days_start + timedelta(days=i)
+        if current_date in readings_by_date:
+            # Replace meditation with Song of Songs reading
+            readings_by_date[current_date] = (
+                readings_by_date[current_date][0],
+                readings_by_date[current_date][1],  # Keep season
+                readings_by_date[current_date][2],  # Keep day name
+                reading,  # Replace meditation
+                readings_by_date[current_date][4],  # Keep OT reading
+                readings_by_date[current_date][5],  # Keep NT reading
+            )
+
+    # Reconstruct the lexicon in sorted order
+    for date, entry in sorted(readings_by_date.items()):
+        adjusted_lexicon.append(entry)
+
+    return adjusted_lexicon
+
+def adjust_baptism_readings(lexicon):
+    """
+    Ensure that the Baptism of Christ day has the correct NT reading and adjust the
+    NT readings column while preserving other columns and their respective data.
+    """
+    readings_by_date = {entry[0]: entry for entry in lexicon}
+
+    # Locate the day with 'Baptism of Christ'
+    baptism_day = None
+    for date, entry in readings_by_date.items():
+        if entry[2] == "Baptism of Christ":  # Check 'Day Name' column
+            baptism_day = date
+            break
+
+    if not baptism_day:
+        print("No 'Baptism of Christ' day found.")
+        return lexicon  # Return unchanged lexicon if not found
+
+    # Identify the NT readings related to baptism
+    baptism_readings = {"Matthew 3", "Luke 3:1-22", "Mark 1:1-13"}
+    nt_readings_list = [
+        (date, entry[5]) for date, entry in readings_by_date.items()
+        if entry[5] and any(baptism_reading in entry[5] for baptism_reading in baptism_readings)
+    ]
+
+    if not nt_readings_list:
+        print("No baptism-related readings found in the NT column.")
+        return lexicon  # Return unchanged lexicon if no readings found
+
+    # Find the first occurrence of a baptism-related reading and its chain
+    move_chain = []
+    for date, nt_reading in nt_readings_list:
+        if date == baptism_day:
+            print(f"Baptism reading already on correct day: {date}")
+            return lexicon  # No adjustment needed if already aligned
+
+        move_chain = [(date, readings_by_date[date][5])]
+        current_date = date + timedelta(days=1)
+        while current_date in readings_by_date and readings_by_date[current_date][5]:
+            move_chain.append((current_date, readings_by_date[current_date][5]))
+            current_date += timedelta(days=1)
+        break
+
+    # Calculate offset to move the chain
+    offset = (baptism_day - move_chain[0][0]).days
+
+    # Remove the NT readings chain from its original positions
+    for date, _ in move_chain:
+        readings_by_date[date] = (
+            readings_by_date[date][0],
+            readings_by_date[date][1],  # Keep season
+            readings_by_date[date][2],  # Keep day name
+            readings_by_date[date][3],  # Keep meditation
+            readings_by_date[date][4],  # Keep OT reading
+            "",  # Clear NT reading
+        )
+
+    # Insert the NT readings chain into the new positions
+    for i, (_, nt_reading) in enumerate(move_chain):
+        new_date = baptism_day + timedelta(days=i)
+        readings_by_date[new_date] = (
+            readings_by_date[new_date][0],
+            readings_by_date[new_date][1],  # Keep season
+            readings_by_date[new_date][2],  # Keep day name
+            readings_by_date[new_date][3],  # Keep meditation
+            readings_by_date[new_date][4],  # Keep OT reading
+            nt_reading,  # Move NT reading
+        )
+
+    # Reconstruct the lexicon in sorted order
+    adjusted_lexicon = [
+        (
+            date,
+            entry[1],
+            entry[2],
+            entry[3],
+            entry[4],
+            entry[5],
+        )
+        for date, entry in sorted(readings_by_date.items())
+    ]
+
+    return adjusted_lexicon
+
+def adjust_baptism_meditations(lexicon):
+    """
+    Adjust meditations around the Baptism of Christ day:
+    - Push meditations down by one row so that the Baptism day has no meditation.
+    - Replace 'Psalm' rows with shifted meditations to absorb the shift.
+    - Ensure no other parts of the column are affected.
+    - Candlemas and its adjacent days remain without meditations.
+    """
+    readings_by_date = {entry[0]: entry for entry in lexicon}
+
+    # Locate the day with 'Baptism of Christ'
+    baptism_day = None
+    for date, entry in readings_by_date.items():
+        if entry[2] == "Baptism of Christ":
+            baptism_day = date
+            break
+
+    if not baptism_day:
+        print("No 'Baptism of Christ' day found.")
+        return lexicon
+
+    # Locate Candlemas and its adjacent days
+    candlemas_day = None
+    for date, entry in readings_by_date.items():
+        if entry[2] == "CANDLEMAS":
+            candlemas_day = date
+            break
+
+    if not candlemas_day:
+        print("No 'CANDLEMAS' day found.")
+        return lexicon
+
+    candlemas_adjacent_days = {
+        candlemas_day - timedelta(days=1),
+        candlemas_day,
+        candlemas_day + timedelta(days=1),
+    }
+
+    # Identify affected range: from Baptism day to Proverbs 31's row
+    last_proverb_date = None
+    for date, entry in readings_by_date.items():
+        if entry[3] == "Proverbs 31":
+            last_proverb_date = date
+            break
+
+    if not last_proverb_date:
+        print("No 'Proverbs 31' found in meditations.")
+        return lexicon
+
+    # Collect meditations from Baptism day to the last Proverb
+    meditations_chain = []
+    for date in sorted(readings_by_date.keys()):
+        if baptism_day <= date <= last_proverb_date:
+            meditation = readings_by_date[date][3]
+            if meditation:  # Collect only non-empty meditations
+                meditations_chain.append((date, meditation))
+                readings_by_date[date] = (
+                    readings_by_date[date][0],
+                    readings_by_date[date][1],
+                    readings_by_date[date][2],
+                    "",  # Clear meditation
+                    readings_by_date[date][4],
+                    readings_by_date[date][5],
+                )
+
+    # Reinsert meditations, replacing 'Psalm' and skipping Candlemas days
+    insertion_date = baptism_day + timedelta(days=1)
+    for _, meditation in meditations_chain:
+        while (
+            insertion_date in candlemas_adjacent_days
+            or readings_by_date[insertion_date][3] == "Psalm"
+        ):
+            # Replace 'Psalm' instead of skipping
+            if readings_by_date[insertion_date][3] == "Psalm":
+                readings_by_date[insertion_date] = (
+                    readings_by_date[insertion_date][0],
+                    readings_by_date[insertion_date][1],
+                    readings_by_date[insertion_date][2],
+                    meditation,  # Replace 'Psalm'
+                    readings_by_date[insertion_date][4],
+                    readings_by_date[insertion_date][5],
+                )
+                break
+            insertion_date += timedelta(days=1)
+
+        if readings_by_date[insertion_date][3] != meditation:
+            readings_by_date[insertion_date] = (
+                readings_by_date[insertion_date][0],
+                readings_by_date[insertion_date][1],
+                readings_by_date[insertion_date][2],
+                meditation,  # Reinsert meditation
+                readings_by_date[insertion_date][4],
+                readings_by_date[insertion_date][5],
+            )
+        insertion_date += timedelta(days=1)
+
+    # Reconstruct the lexicon in sorted order
+    adjusted_lexicon = [
+        (
+            date,
+            entry[1],
+            entry[2],
+            entry[3],
+            entry[4],
+            entry[5],
+        )
+        for date, entry in sorted(readings_by_date.items())
+    ]
+
+    return adjusted_lexicon
+
 def combine_carried_over_readings(lexicon):
     """Combine 'Carried Over Days' with existing days while keeping the day name unchanged."""
     readings_by_date = {}
@@ -574,7 +809,12 @@ def generate_lexicon_csv(year, readings_file, output_file):
     # Assign readings to each date
     lexicon = []
     carry_over_readings = []
+    season_days = {}  # Track the total number of days in each season
     for season_name, season_start, season_end, reverse in seasons:
+        # Calculate total days in the season
+        num_days = (season_end - season_start).days + 1
+        season_days[season_name] = num_days
+
         baptism_adjust = season_name == "Epiphany"
         carry_over_to = "Lent" if season_name == "First Ordinary Time" else None
         season_readings, carry_over_readings = assign_readings(
@@ -621,11 +861,41 @@ def generate_lexicon_csv(year, readings_file, output_file):
 
     lexicon = append_unfinished_john_readings_to_lent(lexicon, first_ordinary_time_end, lent_start)
 
-    # Write the lexicon to a CSV
+    # Adjust readings for Baptism of Christ
+    lexicon = adjust_baptism_readings(lexicon)
+    lexicon = adjust_baptism_meditations(lexicon)
+
+    # Add Song of Songs readings to the last six days
+    christ_the_king_date = celebratory_days[2]["Christ the King"]
+    lexicon = add_song_of_songs_readings(lexicon, christ_the_king_date)
+
+    # Add the "Day" column and the blank checkbox column
+    updated_lexicon = []
+    season_day_counts = {season: 0 for season in season_days.keys()}
+    for entry in sorted(lexicon, key=lambda x: x[0]):
+        date, season, day_name, meditation, ot_reading, nt_reading = entry
+        if season in season_day_counts:
+            season_day_counts[season] += 1
+            current_day = season_day_counts[season]
+            total_days = season_days[season]
+            day_notation = f"{current_day:02d}/{total_days:02d}"  # Format as 03/12
+            updated_entry = (
+                "",  # Blank checkbox column
+                date,
+                season,
+                day_notation,
+                day_name,
+                meditation,
+                ot_reading,
+                nt_reading,
+            )
+            updated_lexicon.append(updated_entry)
+
+    # Write the updated lexicon to a CSV
     with open(output_file, mode="w", newline="") as file:
         writer = csv.writer(file)
-        writer.writerow(["Date", "Season", "Day Name", "Meditation", "OT Reading", "NT Reading"])
-        for entry in sorted(lexicon, key=lambda x: x[0]):
+        writer.writerow(["Checkbox", "Date", "Season", "Day", "Day Name", "Meditation", "OT Reading", "NT Reading"])
+        for entry in updated_lexicon:
             writer.writerow(entry)
 
     print(f"Lexicon CSV saved as {output_file}")
@@ -875,7 +1145,8 @@ def main(year):
 if __name__ == "__main__":
     main(year)
 
-# matthew 3 on baptism, and no meditation on baptism
-# space around: epiphany, candlemas
-# song of songs and eccl in proper places
+## matthew 3 on baptism, and no meditation on baptism
+## space around: epiphany, candlemas
+## eccl
+## song of songs
 # proper convention for all scriptures - nt in all three columns
